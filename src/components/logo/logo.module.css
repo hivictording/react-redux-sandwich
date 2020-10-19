@@ -1,0 +1,23 @@
+.logo {
+  width: 100%;
+}
+
+.small {
+  width: 15%;
+}
+
+@media screen and (min-width: 576px) {
+  .small {
+    width: 12%;
+  }
+}
+@media screen and (min-width: 778px) {
+  .small {
+    width: 10%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .small {
+    width: 8%;
+  }
+}
