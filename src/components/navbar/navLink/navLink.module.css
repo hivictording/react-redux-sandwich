@@ -1,6 +1,6 @@
 .navLink {
   color: var(--color-white);
-  margin-right: 2em;
+  margin: 0 1em;
   text-transform: uppercase;
   font-family: var(--font-secondary);
 }
