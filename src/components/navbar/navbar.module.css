@@ -2,8 +2,9 @@
   /* height: 60px; */
   background: var(--color-primary-1);
   color: var(--color-white);
-  padding: 0.5rem 1rem;
+  padding: 0.8rem 1.2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 5px var(--color-primary-1);
 }
