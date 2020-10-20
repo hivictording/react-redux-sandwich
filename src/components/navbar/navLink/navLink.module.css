@@ -1,0 +1,17 @@
+.navLink {
+  color: var(--color-white);
+  margin-right: 2em;
+  text-transform: uppercase;
+  font-family: var(--font-secondary);
+}
+
+.navLink:hover,
+.navLink.active {
+  text-decoration: none;
+  color: var(--color-primary-10);
+}
+
+.navLink.active {
+  color: var(--color-primary-7);
+  border-bottom: 2px solid var(--color-primary-7);
+}

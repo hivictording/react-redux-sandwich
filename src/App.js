@@ -12,7 +12,7 @@ function App() {
     <Router>
       <Layout>
         <Switch>
-          <Route exact path={["/builder","/"]}>
+          <Route exact path={["/home","/"]}>
             <Builder/>
           </Route>
           <Route exact path="/about">

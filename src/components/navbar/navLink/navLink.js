@@ -1,10 +1,11 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom';
 
-const navLink = () => {
+import classes from './navLink.module.css';
+
+const navLink = ({path,text}) => {
     return (
-        <div>
-            NavLink
-        </div>
+    <NavLink className={classes.navLink} activeClassName={classes.active} exact to={path}>{text}</NavLink>
     )
 }
 

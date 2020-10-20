@@ -1,0 +1,9 @@
+.navLinks {
+  display: none;
+}
+
+@media screen and (min-width: 576px) {
+  .navLinks {
+    display: block;
+  }
+}
