@@ -54,6 +54,7 @@
   --color-secondary-5: #87fbfb;
 
   --main-transition: all 0.4s linear;
+  --letter-spacing: 0.1em;
 }
 
 *,
@@ -71,5 +72,5 @@ img {
 }
 
 body {
-  font-family: var(--font-primary) !important;
+  font-family: var(--font-secondary) !important;
 }

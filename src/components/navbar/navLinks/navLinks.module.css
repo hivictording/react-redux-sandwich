@@ -1,9 +1,10 @@
 .navLinks {
   display: none;
+  font-family: var(--font-primary);
 }
 
 @media screen and (min-width: 576px) {
   .navLinks {
-    display: block;
+    display: flex;
   }
 }

@@ -6,10 +6,32 @@ import Logo from '../logo'
 import NavLinks from './navLinks/navLinks'
 import ToggleMenu from '../sideMenu/toggleMenu'
 import SideMenu from '../sideMenu/sideMenu'
+import { FaWindows } from 'react-icons/fa';
 
 export default class NavBar extends Component {
     state = {
         showBar: true,
+    }
+
+    prevClientWidth = +document.documentElement.clientWidth;
+    currentClientWidth;
+
+    componentDidMount() {
+        // remove the sidemenu when resize the window back to less than 576px
+        window.addEventListener('resize',() => {
+            this.currentClientWidth = +document.documentElement.clientWidth;
+            if (+this.currentClientWidth <= 578 && this.prevClientWidth > 578 && !this.state.showBar) {
+                    this.setState({
+                        ...this.state,
+                        showBar: true
+                    })
+            }
+            this.prevClientWidth = this.currentClientWidth;
+        });
+        return () => {
+            console.log('remove listener');
+            window.removeEventListener('resize');
+        }
     }
 
     handleShowBar = () => {

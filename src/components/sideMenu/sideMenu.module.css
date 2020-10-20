@@ -22,10 +22,16 @@
   flex-flow: column;
   align-items: flex-end;
   background: var(--color-primary-3);
+  font-family: var(--font-script);
 }
 
 .sideMenuCenter > * {
   margin-bottom: 1em;
+}
+
+.sideMenuCenter > *:hover {
+  padding-right: 0.5em;
+  transform: scale(1.2);
 }
 
 @media screen and (min-width: 576px) {

@@ -1,8 +1,14 @@
 .navLink {
   color: var(--color-white);
-  margin: 0 1em;
+  margin: 0 0.6em;
   text-transform: uppercase;
-  font-family: var(--font-secondary);
+  letter-spacing: var(--letter-spacing);
+  transition: var(--main-transition);
+  display: block;
+}
+
+.navLink:hover {
+  transform: scale(1.2);
 }
 
 .navLink:hover,
