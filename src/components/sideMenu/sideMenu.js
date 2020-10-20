@@ -1,4 +1,5 @@
 import React from 'react'
+import {FaTimes} from 'react-icons/fa'
 import NavLink from '../navbar/navLink/navLink';
 import BackDrop from '../../components/backDrop';
 
@@ -14,11 +15,17 @@ const SideMenu = ({clicked,show}) => {
     return (
         <div className={`${classList}`}>
             <BackDrop clicked={clicked}/>
-            <div className={classes.sideMenuCenter}>
-                <NavLink path="/" text="home"/>
-                <NavLink path="/orders" text="orders"/>
-                <NavLink path="/about" text="about"/>
-                <NavLink path="/login" text="login"/>
+            <div className={classes.sideMenuContent}>
+                <div className={classes.sideMenuClose}>
+                    <button onClick={clicked}><FaTimes/></button>
+                </div>
+
+                <div className={classes.sideMenuCenter}>
+                    <NavLink path="/" text="home"/>
+                    <NavLink path="/orders" text="orders"/>
+                    <NavLink path="/about" text="about"/>
+                    <NavLink path="/login" text="login"/>
+                </div>
             </div>
         </div>
         

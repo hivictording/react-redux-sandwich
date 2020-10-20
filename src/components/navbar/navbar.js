@@ -44,7 +44,7 @@ export default class NavBar extends Component {
             <div className={classes.navbar}>
                 <Logo size="small"/>
                 <NavLinks/>
-                <ToggleMenu {...this.state} clicked={this.handleShowBar}/>
+                <ToggleMenu clicked={this.handleShowBar}/>
                 {/* {this.state.showBar || <SideMenu clicked={this.handleShowBar}/>} */}
 
                 {/* implementing SideMenu Transition */}
