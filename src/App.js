@@ -1,5 +1,9 @@
 import React from 'react';
+import {createStore,combineReducers} from 'redux'
+import {Provider} from 'react-redux'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+
+import IngridentsReducer from './store/reducers/ingredients'
 
 import Layout from './pages/layout'
 import Builder from './pages/builder'
@@ -8,8 +12,16 @@ import Orders from './pages/orders'
 import Default from './pages/default'
 
 function App() {
+
+  const parentReducer = combineReducers({
+    ingredients: IngridentsReducer
+  })
+
+  const store = createStore(parentReducer);
+
   return (
-    <Router>
+    <Provider store={store}>
+      <Router>
       <Layout>
         <Switch>
           <Route exact path={["/home","/"]}>
@@ -27,6 +39,8 @@ function App() {
         </Switch>
       </Layout>
     </Router>
+    </Provider>
+    
   );
 }
 
