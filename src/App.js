@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import thunk from 'redux-thunk'
 
 import IngridentsReducer from './store/reducers/ingredients'
+import IngridentsDBReducer from './store/reducers/ingredientsDB'
 
 import Layout from './pages/layout'
 import Builder from './pages/builder'
@@ -18,7 +19,8 @@ function App() {
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
   const parentReducer = combineReducers({
-    ingredients: IngridentsReducer
+    ingredients: IngridentsReducer,
+    ingredientsDB: IngridentsDBReducer
   })
 
   const store = createStore(parentReducer,composeEnhancers(applyMiddleware(...middleware)));

@@ -8,10 +8,10 @@ import {FaMinusSquare} from 'react-icons/fa'
 import {addIngredient} from '../../../store/actions/ingredients';
 
 
-const BuilderControl = ({ingredient,addIngredient}) => {
+const BuilderControl = ({ingredient,price,addIngredient}) => {
     return (
         <article className={classes.builderControl}>
-          <button className={classes.iconWrapper} onClick={() => addIngredient(ingredient)}>
+          <button className={classes.iconWrapper} onClick={() => addIngredient(ingredient,price)}>
               <FaPlusSquare/>
           </button>
     <div className="builderControlText">{ingredient}</div>  

@@ -1,10 +1,14 @@
 import * as Actions from './actions';
 
-const fetchIngredientsFromBackend = () => {
-    return {type: Actions.FETCH_INGREDIENTS_FROM_BACKEND}
+const fetchIngredientsFromDB = () => {
+    return {type: Actions.FETCH_INGREDIENTS_FROM_DB}
 };
 
-const addIngredient = (ingredient) => {
-   return {type: Actions.ADD_INGREDIENT, payload:ingredient} };
+const setInitTotalPrice = (price) => {
+    return {type: Actions.SET_INIT_TOTALPRICE, payload: price}
+};
 
-export {fetchIngredientsFromBackend,addIngredient}
+const addIngredient = (ingredient,price) => {
+   return {type: Actions.ADD_INGREDIENT, payload:{ingredient:ingredient,price:price}} };
+
+export {fetchIngredientsFromDB, setInitTotalPrice ,addIngredient}
