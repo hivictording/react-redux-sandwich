@@ -1,0 +1,21 @@
+.builder {
+  width: 100vw;
+  height: 89vh;
+  background: var(--color-gray-2);
+  padding: 1em 2em;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.builder > * {
+  margin-top: 1.5em;
+}
+
+.builderTitle {
+  font-family: var(--font-script);
+  text-transform: uppercase;
+  color: var(--color-secondary-2);
+  font-weight: bold;
+}

@@ -1,0 +1,19 @@
+.builderControl {
+  width: 45%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+  color: var(--color-gray);
+}
+
+.iconWrapper {
+  border: none;
+  background: transparent;
+  color: var(--color-gray);
+  font-size: 1.2em;
+}
+
+.iconWrapper:focus {
+  outline: none;
+}

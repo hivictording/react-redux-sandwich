@@ -1,0 +1,31 @@
+.card {
+  background: var(--color-primary-3);
+  color: var(--color-white);
+  box-shadow: 6px 7px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 6px 7px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 6px 7px 5px 0px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.card.small {
+  width: 100%;
+}
+
+.card.large {
+  width: 100%;
+}
+
+@media screen and (min-width: 576px) {
+  .card.small {
+    width: 75%;
+    height: 20%;
+  }
+
+  .card.large {
+    width: 75%;
+    height: 50%;
+  }
+}

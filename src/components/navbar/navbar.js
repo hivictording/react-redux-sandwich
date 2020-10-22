@@ -6,7 +6,6 @@ import Logo from '../logo'
 import NavLinks from './navLinks/navLinks'
 import ToggleMenu from '../sideMenu/toggleMenu'
 import SideMenu from '../sideMenu/sideMenu'
-import { FaWindows } from 'react-icons/fa';
 
 export default class NavBar extends Component {
     state = {

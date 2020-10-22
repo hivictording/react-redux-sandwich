@@ -37,6 +37,8 @@
   --color-black: #0f010e;
   --color-white: #ffffff;
   --color-gray: #c9d5ca;
+  --color-gray-2: #ecedee;
+  --color-gray-3: #d8dadb;
   --color-primary-1: #4a0347;
   --color-primary-2: #760472;
   --color-primary-3: #a2069d;
@@ -63,6 +65,16 @@
   padding: 0;
   margin: 0;
   box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 img {
