@@ -4,14 +4,19 @@
   justify-content: space-between;
   align-items: center;
   text-transform: capitalize;
-  color: var(--color-gray);
+  color: var(--color-white);
+  font-size: 0.85em;
 }
 
 .iconWrapper {
   border: none;
   background: transparent;
-  color: var(--color-gray);
+  color: var(--color-white);
   font-size: 1.2em;
+}
+
+.iconWrapper:disabled {
+  color: var(--color-gray);
 }
 
 .iconWrapper:focus {

@@ -12,6 +12,22 @@ const initState = {
             price: 1.2,
             stockNumber: 13,
         },
+        cabbage: {
+            inStock: true,
+            price: 1.2,
+            stockNumber: 13,
+        },
+        mushroom: {
+            inStock: true,
+            price: 1.4,
+            stockNumber: 13,
+        },
+        turkey: {
+            price:6.1
+        },
+        chicken: {
+            price:7.9
+        },
         lettuce: {
             inStock: true,
             price: 0.5,
@@ -32,8 +48,33 @@ const initState = {
             price: 1.6,
             stockNumber: 50,
         },
+        "red pepper": {
+            inStock: true,
+            price: 1.8,
+            stockNumber: 50,
+        },
+        "potato": {
+            inStock: true,
+            price: 3.2,
+            stockNumber: 50,
+        },
+        "brocolli": {
+            inStock: true,
+            price: 2.7,
+            stockNumber: 50,
+        },
+        "cheese": {
+            inStock: true,
+            price: 1.3,
+            stockNumber: 50,
+        },
+        "pickle": {
+            inStock: true,
+            price: 1.3,
+            stockNumber: 50,
+        },
     },
-    basePrice: 6
+    basePrice: 0
 }
 
 const ingredientsDBReducer = (state=initState,action) => {

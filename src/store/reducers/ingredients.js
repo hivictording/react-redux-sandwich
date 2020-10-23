@@ -20,7 +20,22 @@ const ingredientReducer = (state=initState, action) => {
                 ingredientCount = 1;
             }
             let updatedIngredients = {...state.ingredients,[ingredientName]: ingredientCount};
-            return {...state, ingredients:updatedIngredients, totalPrice: state.totalPrice + ingredientPrice}
+            return {...state, ingredients:updatedIngredients, totalPrice: +(state.totalPrice + ingredientPrice).toFixed(2)}
+        }
+        case (Actions.REMOVE_INGREDIENT): {
+            const ingredientName = action.payload.ingredient;
+            const ingredientPrice = action.payload.price;
+            let updatedIngredients;
+            if (state.ingredients[ingredientName]) {
+                let updatedIngredientCount = state.ingredients[ingredientName] -1 ;
+                if (updatedIngredientCount >= 1) {
+                    updatedIngredients = {...state.ingredients,[ingredientName]: updatedIngredientCount}
+                } else {
+                    updatedIngredients = {...state.ingredients};
+                    delete updatedIngredients[ingredientName]
+                }
+            }
+            return {...state, ingredients:updatedIngredients, totalPrice: +(state.totalPrice - ingredientPrice).toFixed(2)}
         }
         default:
             return state; 

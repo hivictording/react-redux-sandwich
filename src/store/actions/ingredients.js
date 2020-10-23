@@ -11,4 +11,7 @@ const setInitTotalPrice = (price) => {
 const addIngredient = (ingredient,price) => {
    return {type: Actions.ADD_INGREDIENT, payload:{ingredient:ingredient,price:price}} };
 
-export {fetchIngredientsFromDB, setInitTotalPrice ,addIngredient}
+const removeIngredient = (ingredient,price) => {
+   return {type: Actions.REMOVE_INGREDIENT, payload:{ingredient:ingredient,price:price}} };
+
+export {fetchIngredientsFromDB, setInitTotalPrice ,addIngredient,removeIngredient}
