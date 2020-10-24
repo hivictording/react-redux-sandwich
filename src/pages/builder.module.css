@@ -2,7 +2,7 @@
   width: 100vw;
   height: 89vh;
   background: var(--color-gray-2);
-  padding: 0.3em 1em;
+  padding: 0.2em 1.5em;
   display: flex;
   flex-flow: column;
   justify-content: flex-start;
@@ -21,20 +21,37 @@
   margin-bottom: 0.3em;
 }
 
+.basePrice {
+  margin-bottom: 0.5em;
+  /* color: var(--color-primary-2); */
+  font-size: 0.8em;
+}
 .totalPrice {
-  margin-top: 0.2em;
+  /* margin-top: 0.75em; */
   color: var(--color-primary-2);
+  background: var(--color-white);
+  width: 60%;
+  margin: 0.75em auto 0;
+  font-size: 0.9em;
+  border: 2px solid var(--color-primary-1);
+  border-radius: 5px;
 }
 
 .ingredientList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
   text-transform: capitalize;
   text-align: center;
   font-size: 0.8em;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
-/* .ingredientList > * {
-  flex-basis: 50%;
-} */
+.builderControls {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+@media screen and (min-width: 578px) {
+  .totalPrice {
+    width: 38%;
+  }
+}

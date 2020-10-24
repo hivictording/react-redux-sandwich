@@ -11,7 +11,11 @@ import classes from './builder.module.css'
 class Builder extends Component {
 
     findIngredientNumber = (ingredients,ingredient) => {
-        return ingredients[ingredient] ? true : false;
+        return ingredients[ingredient];
+    }
+
+    findIngredientPrice = (ingredients,ingredient) => {
+        return ingredients[ingredient].price;
     }
 
     componentDidMount() {
@@ -22,21 +26,27 @@ class Builder extends Component {
         let ingredientList, builderControls;
 
         // ingredient List
+        const ingredientArray = Object.entries(this.props.ingredients.ingredients);
         if (Object.entries(this.props.ingredients.ingredients).length < 1) {
             ingredientList = (<h6>Empty</h6>)
         } else {
             const myIngredients = Object.entries(this.props.ingredients.ingredients);
 
-            ingredientList = (myIngredients.map((ingredient,index) => {
-            return <div key={ingredient[0]}>{index !== 0 ? ", ":""}{ingredient[1]} {ingredient[0]}</div>
-                    }))
+            ingredientList = (<div className={classes.ingredientList}>
+                {myIngredients.map((ingredient,index) => {
+            return <div key={ingredient[0]}>
+                {ingredient[0]} {ingredient[1]}: ${(this.findIngredientPrice(this.props.ingredientsDB.ingredients,ingredient[0]) * this.findIngredientNumber(this.props.ingredients.ingredients,ingredient[0])).toFixed(2)}
+            </div>
+                    })}
+            </div>)
         }
 
         // buildControls
+        const ingredientDBArray = Object.entries(this.props.ingredientsDB.ingredients);
         if (!this.props.ingredientsDB) {
             builderControls = (<h3>No Ingredients Found</h3>)
         } else {
-            const myIngredients = Object.entries(this.props.ingredientsDB.ingredients).map(ingredient => {
+            const myIngredients = ingredientDBArray.map(ingredient => {
             const {price,inStock,stockNumber} = ingredient[1];
             return {
                 name: ingredient[0],
@@ -47,7 +57,7 @@ class Builder extends Component {
             });
 
             builderControls = (myIngredients.map(({name,price}) => {
-                        return <BuilderControl key={name} ingredient={name} price={price} enabled={this.findIngredientNumber(this.props.ingredients.ingredients,name)}/>
+                        return <BuilderControl key={name} ingredient={name} price={price} enabled={this.findIngredientNumber(this.props.ingredients.ingredients,name) >= 1}/>
                     }))
         }
 
@@ -55,18 +65,25 @@ class Builder extends Component {
             <div className={classes.builder}>
                 <Card>
                     <div className={classes.cardTitle}>Your Ingredients</div>
-                    {(Object.entries(this.props.ingredients.ingredients).length >= 1) && (<div className={classes.totalPrice}>
-                        Total Price: {this.props.ingredients.totalPrice}
+                    {(ingredientArray.length >= 1) && (<div className={classes.basePrice}>
+                        Base Price: ${this.props.ingredientsDB.basePrice}
                     </div>)}
-                    <div className={classes.ingredientList}>
+                    <div className={classes.cardCenter}>
                         {ingredientList}
                     </div>
+                    
+                    {(ingredientArray.length >= 1) && (<div className={classes.totalPrice}>
+                        Total Price: ${this.props.ingredients.totalPrice}
+                    </div>)}
                     
                     
                 </Card>
                 <Card size="large">
                     <div className={classes.cardTitle}>Select Ingredients</div>
-                    {builderControls}
+                    <div className={classes.builderControls}>
+                        {builderControls}
+                    </div>
+                    
                 </Card>
             </div>
             

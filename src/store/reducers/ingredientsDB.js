@@ -74,7 +74,7 @@ const initState = {
             stockNumber: 50,
         },
     },
-    basePrice: 0
+    basePrice: 3.99
 }
 
 const ingredientsDBReducer = (state=initState,action) => {
