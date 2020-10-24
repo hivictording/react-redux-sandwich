@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import {setInitTotalPrice} from '../store/actions/ingredients'
+import {setInitTotalPrice,fetchIngredientsFromDB,fetchBasePriceFromDB} from '../store/actions/ingredients'
 
 import Card from '../components/card'
 import BuilderControl from '../components/builder/builderControl'
@@ -14,12 +14,20 @@ class Builder extends Component {
         return ingredients[ingredient];
     }
 
-    findIngredientPrice = (ingredients,ingredient) => {
+    findSingleIngredientPrice = (ingredients,ingredient) => {
         return ingredients[ingredient].price;
     }
 
     componentDidMount() {
-        this.props.setInitTotalPrice(this.props.ingredientsDB.basePrice)
+        this.props.fetchIngredientsFromDB();
+        this.props.fetchBasePriceFromDB();
+        
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.ingredientsDB.basePrice !== this.props.ingredientsDB.basePrice) {
+            this.props.setInitTotalPrice(this.props.ingredientsDB.basePrice)
+        }
     }
     
     render() {
@@ -27,15 +35,14 @@ class Builder extends Component {
 
         // ingredient List
         const ingredientArray = Object.entries(this.props.ingredients.ingredients);
-        if (Object.entries(this.props.ingredients.ingredients).length < 1) {
+        if (ingredientArray.length < 1) {
             ingredientList = (<h6>Empty</h6>)
         } else {
-            const myIngredients = Object.entries(this.props.ingredients.ingredients);
 
             ingredientList = (<div className={classes.ingredientList}>
-                {myIngredients.map((ingredient,index) => {
+                {ingredientArray.map((ingredient) => {
             return <div key={ingredient[0]}>
-                {ingredient[0]} {ingredient[1]}: ${(this.findIngredientPrice(this.props.ingredientsDB.ingredients,ingredient[0]) * this.findIngredientNumber(this.props.ingredients.ingredients,ingredient[0])).toFixed(2)}
+                {ingredient[0]} {ingredient[1]}: ${(this.findIngredientNumber(this.props.ingredients.ingredients,ingredient[0]) * this.findSingleIngredientPrice(this.props.ingredientsDB.ingredients,ingredient[0])).toFixed(2)}
             </div>
                     })}
             </div>)
@@ -97,5 +104,7 @@ const mapStatetoProps = (state) => {
 }
 
 export default connect(mapStatetoProps,{
-    setInitTotalPrice
+    setInitTotalPrice,
+    fetchIngredientsFromDB,
+    fetchBasePriceFromDB
 })(Builder);
