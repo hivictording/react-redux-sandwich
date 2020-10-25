@@ -1,7 +1,7 @@
 import * as Actions from '../actions/actions';
 
 const initState = {
-    ingredients: {},
+    ingredients: [],
     totalPrice: 0
 }
 
@@ -13,29 +13,36 @@ const ingredientReducer = (state=initState, action) => {
         case (Actions.ADD_INGREDIENT): {
             const ingredientName = action.payload.ingredient;
             const ingredientPrice = action.payload.price;
-            let ingredientCount;
-            if (state.ingredients[ingredientName]) {
-                ingredientCount = state.ingredients[ingredientName] + 1;
+            let newIngredient;
+            const ingredient = state.ingredients.find(i => i.name === ingredientName);
+            if (ingredient) {
+                newIngredient = {...ingredient,count:ingredient.count + 1,totalPrice: +(ingredient.unitPrice + ingredient.totalPrice).toFixed(2)};
+                const filteredIngredients = state.ingredients.filter(i => i.name !== ingredientName);
+                return {...state,ingredients:[...filteredIngredients,newIngredient], totalPrice: +(state.totalPrice + ingredient.unitPrice).toFixed(2)}
             } else {
-                ingredientCount = 1;
+                newIngredient = {name:ingredientName,count: 1,unitPrice:ingredientPrice,totalPrice:ingredientPrice};
+                const newTotalPrice = +(state.totalPrice + ingredientPrice).toFixed(2);
+                return {...state,ingredients:[...state.ingredients,newIngredient],totalPrice: newTotalPrice}
             }
-            let updatedIngredients = {...state.ingredients,[ingredientName]: ingredientCount};
-            return {...state, ingredients:updatedIngredients, totalPrice: +(state.totalPrice + ingredientPrice).toFixed(2)}
         }
+        
         case (Actions.REMOVE_INGREDIENT): {
             const ingredientName = action.payload.ingredient;
-            const ingredientPrice = action.payload.price;
-            let updatedIngredients;
-            if (state.ingredients[ingredientName]) {
-                let updatedIngredientCount = state.ingredients[ingredientName] -1 ;
-                if (updatedIngredientCount >= 1) {
-                    updatedIngredients = {...state.ingredients,[ingredientName]: updatedIngredientCount}
+            let newIngredient;
+            const ingredient = state.ingredients.find(i => i.name === ingredientName);
+            if (ingredient) {
+                const newCount = ingredient.count - 1;
+                const filteredIngredients = state.ingredients.filter(i => i.name !== ingredientName);
+                if (newCount >=1 ) {
+                    newIngredient = {...ingredient,count:newCount,totalPrice: +(ingredient.totalPrice - ingredient.unitPrice).toFixed(2)};
+                    
+                    return {...state,ingredients:[...filteredIngredients,newIngredient], totalPrice: +(state.totalPrice - ingredient.unitPrice).toFixed(2)}
                 } else {
-                    updatedIngredients = {...state.ingredients};
-                    delete updatedIngredients[ingredientName]
+                    return {...state,ingredients:[...filteredIngredients], totalPrice: +(state.totalPrice - ingredient.unitPrice).toFixed(2)}
                 }
             }
-            return {...state, ingredients:updatedIngredients, totalPrice: +(state.totalPrice - ingredientPrice).toFixed(2)}
+                
+            return state;
         }
         default:
             return state; 

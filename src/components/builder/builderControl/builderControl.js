@@ -9,9 +9,6 @@ import {addIngredient,removeIngredient} from '../../../store/actions/ingredients
 
 
 const BuilderControl = ({ingredient,price,enabled,addIngredient,removeIngredient}) => {
-    // const findIngredientNumber = (ingredient) => {
-    //     return ingredients[ingredient] ? true : false;
-    // }
 
     return (
         <article className={classes.builderControl}>
@@ -19,7 +16,7 @@ const BuilderControl = ({ingredient,price,enabled,addIngredient,removeIngredient
               <FaPlusSquare/>
           </button>
           <div className="builderControlText">{ingredient}</div>  
-          <button className={classes.iconWrapper} onClick={() => removeIngredient(ingredient,price)} disabled={!enabled}>
+          <button className={classes.iconWrapper} onClick={() => removeIngredient(ingredient)} disabled={!enabled}>
               <FaMinusSquare/>
           </button>  
         </article>
