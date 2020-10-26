@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
-import {setInitTotalPrice,fetchIngredientsFromDB,fetchBasePriceFromDB} from '../store/actions/ingredients'
+import {setInitTotalPrice,fetchIngredientsFromDB,fetchBasePriceFromDB,clearIngredients} from '../store/actions/ingredients'
 
 import Card from '../components/card'
 import BuilderControl from '../components/builder/builderControl'
+import Button from '../UI/Button'
 
 import classes from './builder.module.css'
 
@@ -65,7 +66,7 @@ class Builder extends Component {
         return (
             <div className={classes.builder}>
                 <Card>
-                    <div className={classes.cardTitle}>Your Ingredients</div>
+                    <div className={classes.cardTitle}>Mario's Sandwich</div>
                     {(ingredientArray.length >= 1) && (<div className={classes.basePrice}>
                         Base Price: ${this.props.ingredientsDB.basePrice}
                     </div>)}
@@ -86,6 +87,11 @@ class Builder extends Component {
                     </div>
                     
                 </Card>
+                <div className={classes.buttons}>
+                        <Button clicked={() => this.props.clearIngredients(this.props.ingredientsDB.basePrice)}>reset</Button>
+                        <Button>add to cart</Button>
+                        <Button>order now</Button>
+                </div>
             </div>
             
         )
@@ -100,5 +106,6 @@ const mapStatetoProps = (state) => {
 export default connect(mapStatetoProps,{
     setInitTotalPrice,
     fetchIngredientsFromDB,
-    fetchBasePriceFromDB
+    fetchBasePriceFromDB,
+    clearIngredients
 })(Builder);

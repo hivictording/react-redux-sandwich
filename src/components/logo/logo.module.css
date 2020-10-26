@@ -3,17 +3,17 @@
 }
 
 .small {
-  width: 12%;
+  width: 15%;
   min-width: 25px;
 }
 
 @media screen and (min-width: 576px) {
   .small {
-    width: 17%;
+    width: 40%;
   }
 }
 @media screen and (min-width: 768px) {
   .small {
-    width: 10%;
+    width: 35%;
   }
 }

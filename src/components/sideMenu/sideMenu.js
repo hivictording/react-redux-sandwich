@@ -21,10 +21,10 @@ const SideMenu = ({clicked,show}) => {
                 </div>
 
                 <div className={classes.sideMenuCenter}>
-                    <NavLink path="/" text="home"/>
-                    <NavLink path="/orders" text="orders"/>
-                    <NavLink path="/about" text="about"/>
-                    <NavLink path="/login" text="login"/>
+                    <NavLink path="/" text="home" clicked={clicked}/>
+                    <NavLink path="/orders" text="orders" clicked={clicked}/>
+                    <NavLink path="/cart" text="cart" clicked={clicked}/>
+                    <NavLink path="/login" text="login" clicked={clicked}/>
                 </div>
             </div>
         </div>

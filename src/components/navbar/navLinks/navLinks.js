@@ -9,8 +9,8 @@ const navLinks = () => {
         <div className={classes.navLinks}>
             <NavLink path="/" text="home"/>
             <NavLink path="/orders" text="orders"/>
-            <NavLink path="/about" text="about"/>
-            <NavLink path="/login" text="login"/>
+            <NavLink path="/cart" text="cart"/>
+            {/* <NavLink path="/login" text="login"/> */}
         </div>
     )
 }

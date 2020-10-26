@@ -4,6 +4,7 @@ import classes from "./navbar.module.css";
 
 import Logo from '../logo'
 import NavLinks from './navLinks/navLinks'
+import NavRight from './navRight/navRight'
 import ToggleMenu from '../sideMenu/toggleMenu'
 import SideMenu from '../sideMenu/sideMenu'
 
@@ -43,6 +44,7 @@ export default class NavBar extends Component {
             <div className={classes.navbar}>
                 <Logo size="small"/>
                 <NavLinks/>
+                <NavRight/>
                 <ToggleMenu clicked={this.handleShowBar}/>
                 {/* {this.state.showBar || <SideMenu clicked={this.handleShowBar}/>} */}
 

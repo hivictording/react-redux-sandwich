@@ -1,27 +1,31 @@
 {
     "ingredients": {
-        "meat": {
-            "price": 3.99,
+        "pork": {
+            "price": 9.99,
             "stockNumber": 18
         },
         "tomato": {
-            "price": 1.29,
+            "price": 2.69,
             "stockNumber": 100
         },
         "cabbage": {
-            "price": 0.39,
+            "price": 2.39,
             "stockNumber": 28
         },
+        "beef": {
+            "price": 9.99,
+            "stockNumber": 111
+        },
         "mushroom": {
-            "price": 1.39,
+            "price": 3.39,
             "stockNumber": 90
         },
         "turkey": {
-            "price": 2.99,
+            "price": 6.99,
             "stockNumber": 13
         },
         "chicken": {
-            "price": 3.99,
+            "price": 7.99,
             "stockNumber": 19
         },
         "lettuce": {
@@ -29,15 +33,15 @@
             "stockNumber": 12
         },
         "cucumber": {
-            "price": 1.19,
+            "price": 0.99,
             "stockNumber": 21
         },
         "red onion": {
-            "price": 0.99,
+            "price": 1.99,
             "stockNumber": 22
         },
         "green pepper": {
-            "price": 0.89,
+            "price": 2.89,
             "stockNumber": 32
         },
         "red pepper": {
@@ -45,24 +49,24 @@
             "stockNumber": 11
         },
         "potato": {
-            "price": 0.19,
+            "price": 3.88,
             "stockNumber": 150
         },
         "brocolli": {
-            "price": 2.19,
+            "price": 2.79,
             "stockNumber": 15
         },
         "cheese": {
-            "price": 0.69,
+            "price": 0.99,
             "stockNumber": 18
         },
         "pickle": {
-            "price": 0.39,
+            "price": 1.39,
             "stockNumber": 20
         }
     },
     "price": {
-        "basePrice": 3.99
+        "basePrice": 1.01
     }
 
 }

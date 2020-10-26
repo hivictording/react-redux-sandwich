@@ -1,0 +1,22 @@
+.button {
+  text-transform: uppercase;
+  background: var(--color-gray-5);
+  color: var(--color-white);
+  padding: 0.3em 1em;
+  letter-spacing: var(--letter-spacing);
+  transition: var(--main-transition);
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px var(--color-black);
+  font-family: var(--font-script);
+  font-size: 0.8em;
+}
+
+.button:hover {
+  background: var(--color-gray-3);
+  color: var(--color-black);
+  transform: scale(1.05);
+}
+
+.button:focus {
+  outline: none;
+}

@@ -44,6 +44,10 @@ const ingredientReducer = (state=initState, action) => {
                 
             return state;
         }
+
+        case (Actions.CLEAR_INGREDIENTS): {
+            return {...state,ingredients:[],totalPrice:action.payload}
+        }
         default:
             return state; 
     }

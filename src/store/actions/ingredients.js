@@ -40,6 +40,8 @@ const addIngredient = (ingredient,price) => {
 
 const removeIngredient = (ingredient) => {
    return {type: Actions.REMOVE_INGREDIENT, payload:{ingredient:ingredient}} };
-//    return {type: Actions.REMOVE_INGREDIENT, payload:{ingredient:ingredient,price:price}} };
 
-export {fetchIngredientsFromDB, fetchBasePriceFromDB,setInitTotalPrice ,addIngredient,removeIngredient}
+const clearIngredients = (basePrice) => {
+    return {type: Actions.CLEAR_INGREDIENTS,payload:basePrice}
+}
+export {fetchIngredientsFromDB, fetchBasePriceFromDB,setInitTotalPrice ,addIngredient,removeIngredient,clearIngredients}

@@ -9,8 +9,9 @@ import IngridentsDBReducer from './store/reducers/ingredientsDB'
 
 import Layout from './pages/layout'
 import Builder from './pages/builder'
-import About from './pages/about'
+import Cart from './pages/cart'
 import Orders from './pages/orders'
+import Login from './pages/login'
 import Default from './pages/default'
 
 function App() {
@@ -34,8 +35,11 @@ function App() {
               <Route exact path={["/home","/"]}>
                 <Builder/>
               </Route>
-              <Route exact path="/about">
-                <About/>
+              <Route exact path="/cart">
+                <Cart/>
+              </Route>
+              <Route exact path="/login">
+                <Login/>
               </Route>
               <Route exact path="/orders">
                 <Orders/>
