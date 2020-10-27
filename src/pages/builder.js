@@ -91,20 +91,19 @@ class Builder extends Component {
                     {(ingredientArray.length >= 1) && (<div className={classes.totalPrice}>
                         Total Price: ${this.props.ingredients.totalPrice}
                     </div>)}
-                    
-                    
                 </Card>
+
                 <Card size="large">
                     <div className={classes.cardTitle}>Select Ingredients</div>
                     <div className={classes.builderControls}>
                         {builderControls}
-                    </div>
-                    
+                    </div> 
                 </Card>
+
                 <div className={classes.buttons}>
-                        <Button clicked={() => this.props.clearIngredients(this.props.ingredientsDB.basePrice)}>reset</Button>
-                        <Button clicked={() => this.addToCartHandler(this.props.ingredients.ingredients,this.props.ingredients.totalPrice)}>add to cart</Button>
-                        <Button>order now</Button>
+                        <Button clicked={() => this.props.clearIngredients(this.props.ingredientsDB.basePrice)} disabled={ingredientArray.length < 1}>reset</Button>
+                        <Button clicked={() => this.addToCartHandler(this.props.ingredients.ingredients,this.props.ingredients.totalPrice)} disabled={ingredientArray.length < 1}>add to cart</Button>
+                        <Button disabled={ingredientArray.length < 1}>order now</Button>
                 </div>
             </div>
             
