@@ -1,3 +1,16 @@
 .cartIcon {
   font-size: 1.6em;
+  position: relative;
+  z-index: 100;
+  color: var(--color-primary-7);
+}
+
+.sandwichNumber {
+  position: absolute;
+  top: 0.1em;
+  right: -0.3em;
+  font-size: 0.6em;
+  font-family: var(--font-secondary-bold);
+  z-index: 2000;
+  color: var(--color-white);
 }

@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 
 import {setInitTotalPrice,fetchIngredientsFromDB,fetchBasePriceFromDB,clearIngredients} from '../store/actions/ingredients'
 
+import {addCartItem} from '../store/actions/cart'
+
 import Card from '../components/card'
 import BuilderControl from '../components/builder/builderControl'
 import Button from '../UI/Button'
@@ -10,6 +12,17 @@ import Button from '../UI/Button'
 import classes from './builder.module.css'
 
 class Builder extends Component {
+
+
+    addToCartHandler = (sandwich,totalPrice) => {
+        this.props.addCartItem({
+            user:'mario',
+            sandwich,
+            totalPrice
+        });
+        this.props.clearIngredients(this.props.ingredientsDB.basePrice);
+        this.props.history.push('/cart');
+    }
 
     componentDidMount() {
         this.props.fetchIngredientsFromDB();
@@ -24,6 +37,7 @@ class Builder extends Component {
     }
     
     render() {
+        // console.log(this.props.location);
         let ingredientList, builderControls;
 
         // ingredient List
@@ -89,7 +103,7 @@ class Builder extends Component {
                 </Card>
                 <div className={classes.buttons}>
                         <Button clicked={() => this.props.clearIngredients(this.props.ingredientsDB.basePrice)}>reset</Button>
-                        <Button>add to cart</Button>
+                        <Button clicked={() => this.addToCartHandler(this.props.ingredients.ingredients,this.props.ingredients.totalPrice)}>add to cart</Button>
                         <Button>order now</Button>
                 </div>
             </div>
@@ -107,5 +121,6 @@ export default connect(mapStatetoProps,{
     setInitTotalPrice,
     fetchIngredientsFromDB,
     fetchBasePriceFromDB,
-    clearIngredients
+    clearIngredients,
+    addCartItem
 })(Builder);

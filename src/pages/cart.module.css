@@ -1,0 +1,45 @@
+.card {
+  box-shadow: 5px 5px 5px var(--color-black);
+  transition: var(--main-transition);
+  position: relative;
+}
+
+.iconWrapper {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  font-weight: bold;
+  opacity: 0;
+  pointer-events: none;
+  color: var(--color-primary-1);
+  transition: var(--main-transition);
+}
+
+.iconWrapper:focus {
+  outline: none;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  opacity: 0.75;
+}
+
+.card:hover .iconWrapper {
+  display: block;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.cartTitle {
+  font-size: 1.5em;
+}
+
+.emptyCart {
+  margin-top: 5em;
+  font-family: var(--font-script);
+  font-size: 1.2em;
+}
