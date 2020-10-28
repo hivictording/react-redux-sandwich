@@ -92,12 +92,18 @@ class Cart extends Component {
                 this.state.confirmClearCart && (
                     <div>
                         <BackDrop clicked={this.toggleModal}/>
-                        <Modal title="Are you sure to clear the cart?" confirmText="Yes" cancelText="Cancel" confirm={() => {
-                            this.props.clearCart();
-                            this.toggleModal();
-                        }} 
-                        cancel={this.toggleModal}/>
+                        
+                        <Modal title="Warning! Clear Cart?" 
+                                confirmText="Yes" 
+                                cancelText="Cancel" 
+                                confirm={() => {
+                                    this.props.clearCart();
+                                    this.toggleModal();
+                                }} 
+                                cancel={this.toggleModal}/>
                     </div>
+                                
+                           
                 )
             }
         </div>
