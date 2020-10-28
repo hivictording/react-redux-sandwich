@@ -1,0 +1,28 @@
+.modal {
+  z-index: 1000;
+  background: var(--color-secondary-1);
+  color: var(--color-gray);
+  width: 80%;
+  /* height: 25%; */
+  padding: 2em 1em;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: 578px) {
+  .modal {
+    width: 60%;
+  }
+}
+@media screen and (min-width: 776px) {
+  .modal {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .modal {
+    width: 40%;
+  }
+}

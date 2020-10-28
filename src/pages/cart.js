@@ -5,6 +5,7 @@ import {FaTimes} from 'react-icons/fa'
 
 import Button from '../UI/Button'
 import BackDrop from '../components/backDrop'
+import Modal from '../UI/Modal'
 import {removeCartItem,clearCart} from '../store/actions/cart'
 
 import classes from './cart.module.css'
@@ -91,6 +92,11 @@ class Cart extends Component {
                 this.state.confirmClearCart && (
                     <div>
                         <BackDrop clicked={this.toggleModal}/>
+                        <Modal title="Are you sure to clear the cart?" confirmText="Yes" cancelText="Cancel" confirm={() => {
+                            this.props.clearCart();
+                            this.toggleModal();
+                        }} 
+                        cancel={this.toggleModal}/>
                     </div>
                 )
             }

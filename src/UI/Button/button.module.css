@@ -11,10 +11,22 @@
   font-size: 0.8em;
 }
 
+.button:disabled {
+  background: lightgray;
+  color: var(--color-black);
+  box-shadow: none;
+}
+
 .button:hover {
   background: var(--color-gray-3);
   color: var(--color-black);
   transform: scale(1.05);
+}
+
+.button:disabled:hover {
+  transform: none;
+  background: lightgray;
+  color: var(--color-black);
 }
 
 .button:focus {

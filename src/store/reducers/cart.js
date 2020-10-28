@@ -1,3 +1,4 @@
+import {v4 as uuid} from 'uuid';
 import * as Actions from '../actions/actions'
 
 const initState = [];
@@ -10,19 +11,24 @@ export default (state=initState,action) => {
             const totalPrice = action.payload.totalPrice;
             const result = state.find(item => item.user === user);
             if (result) {
-                const updatedResult = {...result,sandwichList:[...result.sandwichList,{sandwich,totalPrice}]}
+                const updatedResult = {...result,sandwichList:[...result.sandwichList,{id:uuid(),sandwich,totalPrice}]}
                 const filteredState = state.filter(item => item.user !== user);
                 return [...filteredState,updatedResult]
             } else {
-                return [...state,{user:user,sandwichList:new Array({sandwich,totalPrice})}];
+                // return [...state,{user:user,sandwichList:new Array({sandwich,totalPrice})}];
+                return [...state,{user:user,sandwichList:Array.of({id:uuid(),sandwich,totalPrice})}];
             }
         }
         case (Actions.REMOVE_CART_ITEM): {
-            const filteredCart = state.cart.filter(item => item.id !== action.payload)
-            return {...state,cart: [...filteredCart]}
+            const myCart = state.find(item => item.user === 'mario');
+            const remainingCart = state.filter(item => item.user !== 'mario')
+            const updatedSandwichList = myCart.sandwichList.filter(sandwich => sandwich.id !== action.payload);
+            const myNewCart = {...myCart,sandwichList:updatedSandwichList};
+        
+            return [...remainingCart,myNewCart]
         }
         case (Actions.CLEAR_CART): {
-            return {...state,cart: []}
+            return []
         }
         default:
             return state;
