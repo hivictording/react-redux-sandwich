@@ -31,7 +31,13 @@ class Cart extends Component {
 
     render() {
         let myCart = this.props.cart.find(item => item.user === 'mario');
+        let cartTotalPrice;
+
         if (myCart) {
+            cartTotalPrice = myCart.totalPrice;
+            if (cartTotalPrice === 0) {
+                cartTotalPrice = false;
+            }
             myCart = myCart.sandwichList;
         }
 
@@ -43,10 +49,10 @@ class Cart extends Component {
                     return <div className="col-md-6 col-lg-4 col-xl-3 mx-auto my-2" key={sandwich.id}>
                                 <div className={`card ${classes.card}`}>
                                     <img src={sandwichImg} alt="Sandwich Image" className="img-card-top"/>
-                                    <div className="card-body">
-                                        <h6 className="card-title text-uppercase">total price: {sandwich.totalPrice}</h6>
+                                    <div className="card-body text-center">
+                                        <h6 className="card-title text-capitalize">sandwich price: {sandwich.totalPrice}</h6>
                                     </div>
-                                    <ul className="list-group list-group-flush">
+                                    <ul className="list-group list-group-flush text-center text-capitalize">
                                         {sandwich.sandwich.map(s => {
                                             return <li className="list-group-item" key={s.name}>{s.name}*{s.count}</li>
                                         })}
@@ -74,10 +80,17 @@ class Cart extends Component {
                         <div className={`text-center text-capitalize ${classes.cartTitle}`}>
                             your cart
                         </div>
+                        {cartTotalPrice && 
+                        <div className={`text-center text-capitalize ${classes.cartTotalPrice}`}>
+                            total price: {cartTotalPrice}
+                        </div>}
                     </div>
-                    {myCart && <div className="col-md-10 mx-auto d-flex justify-content-center mt-2 mb-5">
+                    {myCart && <div className="col-10 col-md-7 col-lg-6 mx-auto d-flex justify-content-around mt-2 mb-5">
                         <Button clicked={this.openModal}>
                             clear cart
+                        </Button>
+                        <Button>
+                            proceed to order
                         </Button>
                     </div>}
                     <div className="col-md-12 mx-auto">
@@ -93,7 +106,7 @@ class Cart extends Component {
                     <div>
                         <BackDrop clicked={this.toggleModal}/>
                         
-                        <Modal title="Warning! Clear Cart?" 
+                        <Modal title="clean your cart?" 
                                 confirmText="Yes" 
                                 cancelText="Cancel" 
                                 confirm={() => {
