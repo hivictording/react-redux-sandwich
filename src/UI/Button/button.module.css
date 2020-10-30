@@ -11,6 +11,10 @@
   font-size: 0.8em;
 }
 
+.button.large {
+  width: 100%;
+}
+
 .button:disabled {
   background: lightgray;
   color: var(--color-black);

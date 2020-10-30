@@ -115,8 +115,6 @@ class Cart extends Component {
                                 }} 
                                 cancel={this.toggleModal}/>
                     </div>
-                                
-                           
                 )
             }
         </div>

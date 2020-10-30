@@ -1,0 +1,10 @@
+/* .login {
+  background: lightgray;
+} */
+
+.form {
+  background: var(--color-secondary-1);
+  border: 3px solid var(--color-secondary-1);
+  box-shadow: 5px 5px 4px var(--color-black);
+  color: var(--color-white);
+}
