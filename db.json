@@ -4,6 +4,22 @@
             "price": 9.99,
             "stockNumber": 18
         },
+        "chicken": {
+            "price": 7.99,
+            "stockNumber": 19
+        },
+        "fish": {
+            "price": 12.99,
+            "stockNumber": 17
+        },
+        "beef": {
+            "price": 9.99,
+            "stockNumber": 111
+        },
+        "egg": {
+            "price": 3.99,
+            "stockNumber": 118
+        },
         "tomato": {
             "price": 2.69,
             "stockNumber": 100
@@ -12,10 +28,6 @@
             "price": 2.39,
             "stockNumber": 28
         },
-        "beef": {
-            "price": 9.99,
-            "stockNumber": 111
-        },
         "mushroom": {
             "price": 3.39,
             "stockNumber": 90
@@ -23,10 +35,6 @@
         "turkey": {
             "price": 6.99,
             "stockNumber": 13
-        },
-        "chicken": {
-            "price": 7.99,
-            "stockNumber": 19
         },
         "lettuce": {
             "price": 1.69,
@@ -40,6 +48,10 @@
             "price": 1.99,
             "stockNumber": 22
         },
+        "tofu": {
+            "price": 1.89,
+            "stockNumber": 68
+        },
         "green pepper": {
             "price": 2.89,
             "stockNumber": 32
@@ -47,6 +59,10 @@
         "red pepper": {
             "price": 2.79,
             "stockNumber": 11
+        },
+        "shanghai bok": {
+            "price": 1.99,
+            "stockNumber": 15
         },
         "potato": {
             "price": 3.88,

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-import Button from '../../UI/Button'
-import Input from '../../UI/Input'
-import classes from './loginForm.module.css'
+import Button from '../../../UI/Button/button'
+import Input from '../../../UI/Input/input'
+import classes from './registerForm.module.css'
 
-class LoginForm extends Component {
+class RegisterForm extends Component {
     state = {
         formFields: [
             {
@@ -81,7 +81,10 @@ class LoginForm extends Component {
                     })}
                     
                     <div className="w-100">
-                        <Button size="large">Sign In</Button>
+                        <Button size="large">Submit</Button>
+                    </div>
+                    <div className={classes.buttonSignupWrapper}>
+                        <button className={classes.buttonSignup} onClick={this.props.newUserHandler}>existing user? login here!</button>
                     </div>
                 </form>
             </div>
@@ -90,4 +93,4 @@ class LoginForm extends Component {
     }
 }
 
-export default LoginForm
+export default RegisterForm

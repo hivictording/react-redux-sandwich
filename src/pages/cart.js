@@ -106,7 +106,7 @@ class Cart extends Component {
                     <div>
                         <BackDrop clicked={this.toggleModal}/>
                         
-                        <Modal title="clean your cart?" 
+                        <Modal title="ronaldo is a stupid guy and is watching secomani cat vs dogss" 
                                 confirmText="Yes" 
                                 cancelText="Cancel" 
                                 confirm={() => {

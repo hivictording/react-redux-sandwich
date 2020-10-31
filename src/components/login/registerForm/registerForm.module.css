@@ -1,0 +1,22 @@
+.form {
+  background: var(--color-secondary-1);
+  border: 3px solid var(--color-secondary-1);
+  box-shadow: 5px 5px 4px var(--color-black);
+  color: var(--color-white);
+}
+
+.buttonSignupWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.8em;
+}
+
+.buttonSignup {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-white);
+  text-transform: capitalize;
+  font-size: 0.8em;
+}

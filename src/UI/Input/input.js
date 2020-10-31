@@ -1,6 +1,6 @@
 import React from 'react'
 
-const input = ({name,fieldType,fieldConfig:{type,placeholder},value,changed}) => {
+const input = ({name,fieldType,fieldConfig:{type,placeholder},value,error,changed}) => {
 
     switch (fieldType) {
         case ('input'): {
@@ -14,6 +14,7 @@ const input = ({name,fieldType,fieldConfig:{type,placeholder},value,changed}) =>
                             value={value}
                             onChange={changed}>
                         </input>
+                        {error.status && <span>{error.message}</span>}
                     </div>
         }
 
