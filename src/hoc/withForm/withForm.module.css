@@ -5,14 +5,14 @@
   color: var(--color-white);
 }
 
-.buttonSignupWrapper {
+.buttonSubmitWrapper {
   width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 0.8em;
 }
 
-.buttonSignup {
+.buttonSubmit {
   border: none;
   background: transparent;
   cursor: pointer;

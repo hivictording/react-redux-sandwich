@@ -1,14 +1,15 @@
 function checkValidation(name,value,rules) {
     let error = {status:false,message:[]};
-    console.log(value);
+    
     if (rules.length < 1) return;
-    rules.forEach(rule => {
+    for (const rule of rules) {
         const ruleName = Object.keys(rule)[0];
         const ruleValue = Object.values(rule)[0];
+        // console.log(name,ruleName,ruleValue);
 
         switch (ruleName) {
             case ("isRequired"): {
-                if (!ruleValue) return;
+                if (!ruleValue) return error;
                 if (!value.trim()) {
                     error = {...error,status:true,message:[...error.message,`${name} can not be empty`]}
                 }
@@ -32,7 +33,10 @@ function checkValidation(name,value,rules) {
             default:
                 break;
         }
-    });
+
+        if (error.status) break;
+    }
+
     return error;
 }
 

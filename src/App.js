@@ -7,6 +7,7 @@ import thunk from 'redux-thunk'
 import IngridentsReducer from './store/reducers/ingredients'
 import IngridentsDBReducer from './store/reducers/ingredientsDB'
 import CartReducer from './store/reducers/cart'
+import UserReducer from './store/reducers/user'
 
 import Layout from './pages/layout'
 import Builder from './pages/builder'
@@ -23,7 +24,8 @@ function App() {
   const parentReducer = combineReducers({
     ingredients: IngridentsReducer,
     ingredientsDB: IngridentsDBReducer,
-    cart: CartReducer
+    cart: CartReducer,
+    user: UserReducer
   })
 
   const store = createStore(parentReducer,composeEnhancers(applyMiddleware(...middleware)));

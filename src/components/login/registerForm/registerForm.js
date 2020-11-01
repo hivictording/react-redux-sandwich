@@ -1,12 +1,6 @@
-import React, { Component } from 'react'
+import withForm from '../../../hoc/withForm';
 
-import Button from '../../../UI/Button/button'
-import Input from '../../../UI/Input/input'
-import classes from './registerForm.module.css'
-
-class RegisterForm extends Component {
-    state = {
-        formFields: [
+const formFields = [
             {
                 id:1,
                 name: 'username',
@@ -21,7 +15,7 @@ class RegisterForm extends Component {
                     {minLength: 5},
                     {maxLength: 10},
                 ],
-                isValid: false
+                error: {status:false,message:[]}
             },
             {
                 id:2,
@@ -35,7 +29,7 @@ class RegisterForm extends Component {
                 rules:[
                     {isRequired: true},
                 ],
-                isValid: false
+                error: {status:false,message:[]}
             },
             {
                 id:3,
@@ -51,46 +45,11 @@ class RegisterForm extends Component {
                     {minLength: 6},
                     {maxLength: 12},
                 ],
-                isValid: false
+                error: {status:false,message:[]}
             },
         ]
-    }
+    
+    const text = 'existing user? login here!';
+    const formType = "registration"
 
-    changeHandler = (event) => {
-        const currentField = this.state.formFields.find(field => field.name === event.target.name);
-        const filteredFields = this.state.formFields.filter(field => field.name !== event.target.name);
-        currentField.value = event.target.value;
-        
-        this.setState({
-            ...this.state,
-            formFields:[...filteredFields,currentField]
-        })
-    }
-
-    render() {
-        const sortedFields = this.state.formFields.sort((a,b)=>a.id < b.id ? -1 : 1)
-
-        return (
-        <div className="row">
-            <div className={`${classes.form} col-10 col-md-8 col-lg-6 mx-auto py-2 px-4`}>
-                <h5 className="text-center text-capitalize">create your account</h5>
-                <form className='my-3'>
-                    {sortedFields.map((field) => {
-                        return <Input {...field} changed={this.changeHandler} key={field.id}/>
-                               
-                    })}
-                    
-                    <div className="w-100">
-                        <Button size="large">Submit</Button>
-                    </div>
-                    <div className={classes.buttonSignupWrapper}>
-                        <button className={classes.buttonSignup} onClick={this.props.newUserHandler}>existing user? login here!</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    )
-    }
-}
-
-export default RegisterForm
+    export default withForm(formFields,text,"registration");
