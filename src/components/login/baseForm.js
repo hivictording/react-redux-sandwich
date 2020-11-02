@@ -1,17 +1,20 @@
-import React,{Component} from 'react'
+import React, { Component } from 'react'
+import {withRouter} from 'react-router-dom'
+
 import Button from '../../UI/Button'
 import Input from '../../UI/Input'
-import classes from './withForm.module.css'
+import classes from './baseForm.module.css'
 
 import {connect} from 'react-redux'
-import {saveUser} from '../../store/actions/user'
+import {userRegistration,userLogin} from '../../store/actions/user'
 
 import {checkValidation} from '../../utils/formUtils'
 
-const withForm = (formFields,text,formType) => {
-    const newComponent = (
-        class newComponent extends Component {
-        state = {formFields}
+class BaseForm extends Component {
+
+    state = {
+        formFields: this.props.formFields
+    }
 
     changeHandler = (event) => {
         const currentField = this.state.formFields.find(field => field.name === event.target.name);
@@ -47,16 +50,21 @@ const withForm = (formFields,text,formType) => {
         event.preventDefault();
 
         if(this.checkForm()) {
-            if (formType !== 'registration') return;
             
-            
-            if (formType === "registration") {
+            if (this.props.formType === "registration") {
                 const username = this.state.formFields.find(field => field.name==='username').value;
                 const email = this.state.formFields.find(field => field.name==='email').value;
                 const password = this.state.formFields.find(field => field.name==='password').value;
                 console.log(username,email,password);
-                this.props.saveUser({username,email,password})
+                this.props.userRegistration({username,email,password})
+            } else if (this.props.formType === "login") {
+                const username = this.state.formFields.find(field => field.name==='username').value;
+                const password = this.state.formFields.find(field => field.name==='password').value;
+                // console.log(username,password);
+                this.props.userLogin(username,password)
             }
+
+            this.props.history.push('/');
         }
     }
 
@@ -76,7 +84,7 @@ const withForm = (formFields,text,formType) => {
                         <Button size="large" clicked={this.submitHandler}>login</Button>
                     </div>
                     <div className={classes.buttonSubmitWrapper}>
-                <button className={classes.buttonSubmit} onClick={this.props.newUserHandler}>{text}</button>
+                <button className={classes.buttonSubmit} onClick={this.props.newUserHandler}>{this.props.text}</button>
                     </div>
                     
                 </form>
@@ -84,11 +92,6 @@ const withForm = (formFields,text,formType) => {
         </div>
     )
     }
-    }
-    )
-
-    return connect(null,{saveUser})(newComponent)
 }
 
-export default withForm;
-
+export default withRouter(connect(null,{userRegistration,userLogin})(BaseForm))

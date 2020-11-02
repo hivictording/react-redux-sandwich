@@ -41,8 +41,8 @@ function App() {
               <Route exact path="/cart">
                 <Cart/>
               </Route>
-              <Route exact path="/login">
-                <Login/>
+              <Route exact path="/login" render={(routeProps) => <Login {...routeProps}/>}>
+                {/* <Login/> */}
               </Route>
               <Route exact path="/orders">
                 <Orders/>

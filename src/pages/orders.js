@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
+import withAuth from '../hoc/withAuth'
 
-export default class Orders extends Component {
+class Orders extends Component {
     render() {
         return (
             <div>
-                Hello from Orders Page
+                Hello Orders Page
             </div>
         )
     }
 }
+
+export default withAuth(Orders)

@@ -1,0 +1,30 @@
+.navLogout {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.currentUserWrapper {
+  font-size: 0.7em;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: 1em;
+}
+
+.currentUser {
+  border: 2px solid transparent;
+  background: transparent;
+  color: var(--color-gray);
+  margin-left: 0.3em;
+  transition: var(--main-transition);
+}
+
+.currentUser:hover {
+  color: var(--color-gray-4);
+  border-bottom: 2px solid var(--color-gray-4);
+}
+
+.currentUser:focus {
+  outline: none;
+}

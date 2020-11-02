@@ -1,4 +1,6 @@
-import withForm from '../../../hoc/withForm';
+import baseForm from '../baseForm'
+import withForm from '../withForm';
+
 
 const formFields =[
             {
@@ -36,6 +38,5 @@ const formFields =[
         ]
     
     const text = 'new user? sign up!';
-    const formType = "login"
 
-    export default withForm(formFields,text,"login")
+export default withForm(baseForm,formFields,"login",text)

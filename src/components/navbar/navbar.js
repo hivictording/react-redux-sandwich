@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 
 import classes from "./navbar.module.css";
 
@@ -8,7 +9,7 @@ import NavRight from './navRight/navRight'
 import ToggleMenu from '../sideMenu/toggleMenu'
 import SideMenu from '../sideMenu/sideMenu'
 
-export default class NavBar extends Component {
+class NavBar extends Component {
     state = {
         showBar: true,
     }
@@ -44,7 +45,7 @@ export default class NavBar extends Component {
             <div className={classes.navbar}>
                 <Logo size="small"/>
                 <NavLinks/>
-                <NavRight/>
+                <NavRight isAuthenticated={this.props.isAuthenticated} currentUser={this.props.currentUser}/>
                 <ToggleMenu clicked={this.handleShowBar}/>
                 {/* {this.state.showBar || <SideMenu clicked={this.handleShowBar}/>} */}
 
@@ -54,3 +55,12 @@ export default class NavBar extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        isAuthenticated: Object.entries(state.user.user).length >= 1,
+        currentUser: state.user.user.username
+    }
+}
+
+export default connect(mapStateToProps)(NavBar)

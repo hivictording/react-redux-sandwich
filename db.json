@@ -86,16 +86,22 @@
   },
   "users": [
     {
-      "username": "jianboding",
+      "username": "hivictor",
       "email": "jianboding@outlook.com",
-      "password": "654321",
-      "id": "d9680755-3e62-4508-86aa-518c43320bb8"
+      "password": "password",
+      "id": "3942c79b-3eeb-4461-94bd-7e857ea007cd"
     },
     {
-      "username": "hivictor",
-      "email": "aaa@test.com",
-      "password": "1234567",
-      "id": "da7487cc-e1b1-40bf-a82e-bbc6af0f1c9c"
+      "username": "hiroot",
+      "email": "sdferw",
+      "password": "setewter",
+      "id": "ccbfec32-9cec-4598-9c9c-ea3a6ddb6a9c"
+    },
+    {
+      "username": "marioding",
+      "email": "mding@outlook.com",
+      "password": "12345678",
+      "id": "494ff6c2-7ef1-418b-b971-e3d0bd72c60d"
     }
   ]
 }
