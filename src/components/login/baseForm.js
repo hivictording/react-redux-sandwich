@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {withRouter} from 'react-router-dom'
+import {withRouter,Redirect} from 'react-router-dom'
 
 import Button from '../../UI/Button'
 import Input from '../../UI/Input'
@@ -60,15 +60,17 @@ class BaseForm extends Component {
             } else if (this.props.formType === "login") {
                 const username = this.state.formFields.find(field => field.name==='username').value;
                 const password = this.state.formFields.find(field => field.name==='password').value;
-                // console.log(username,password);
                 this.props.userLogin(username,password)
             }
 
-            this.props.history.push('/');
+            // this.props.history.push('/');
         }
     }
 
     render() {
+        if (!this.props.currentUser.error && Object.entries(this.props.currentUser.user).length >=1) {
+            return <Redirect to="/"/>
+        }
         const sortedFields = this.state.formFields.sort((a,b)=>a.id < b.id ? -1 : 1)
 
         return (
@@ -79,6 +81,8 @@ class BaseForm extends Component {
                         return <Input {...field} changed={this.changeHandler} key={field.id}/>
                                
                     })}
+
+                    {this.props.currentUser.error && <p className="text-danger text-capitalize">username or password is not correct...</p>}
                     
                     <div className="w-100">
                         <Button size="large" clicked={this.submitHandler}>login</Button>
@@ -94,4 +98,9 @@ class BaseForm extends Component {
     }
 }
 
-export default withRouter(connect(null,{userRegistration,userLogin})(BaseForm))
+const mapStateToProps = (state) => {
+    return {
+        currentUser: state.user
+    }
+}
+export default withRouter(connect(mapStateToProps,{userRegistration,userLogin})(BaseForm))

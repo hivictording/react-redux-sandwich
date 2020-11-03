@@ -1,8 +1,10 @@
 import * as Actions from '../actions/actions'
 
 const initState = {
+    loading:false,
     ingredients: {},
-    basePrice: 0
+    basePrice: 0,
+    error:null
 }
 
 const ingredientsDBReducer = (state=initState,action) => {

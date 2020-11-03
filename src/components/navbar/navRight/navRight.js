@@ -5,12 +5,12 @@ import NavLogout from './navLogout'
 
 import classes from './navRight.module.css'
 
-const NavRight = ({isAuthenticated,currentUser}) => {
+const NavRight = ({isAuthenticated,currentUser,logout}) => {
 
     return (
         <div className={classes.NavRight}>
             {isAuthenticated || <NavLogin/>}
-            {isAuthenticated && <NavLogout currentUser={currentUser}/>}
+            {isAuthenticated && <NavLogout currentUser={currentUser} logout={logout}/>}
             <NavCart/>
         </div>
     )

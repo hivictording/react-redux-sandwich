@@ -5,7 +5,8 @@ import axiosLocal from '../../utils/axios/axiosLocal'
 const fetchIngredientsFromDB = () => {
     return async (dispatch) => {
         try {
-            let response = await axiosLocal.get('/ingredients');
+            
+            let response = await axiosLocal.get('/ingredientssss');
             dispatch(setInitIngredients(response.data));
         } catch (error) {
             console.log(error);
