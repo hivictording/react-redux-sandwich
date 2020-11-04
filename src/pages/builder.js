@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 
+import withAxios from '../hoc/withAxios'
+import axios from '../utils/axios/axiosLocal'
 import {setInitTotalPrice,fetchIngredientsFromDB,fetchBasePriceFromDB,clearIngredients} from '../store/actions/ingredients'
 
 import {addCartItem} from '../store/actions/cart'
@@ -8,11 +10,11 @@ import {addCartItem} from '../store/actions/cart'
 import Card from '../components/card'
 import BuilderControl from '../components/builder/builderControl'
 import Button from '../UI/Button'
+import Spinner from '../UI/Spinner'
 
 import classes from './builder.module.css'
 
 class Builder extends Component {
-
 
     addToCartHandler = (sandwich,totalPrice) => {
         this.props.addCartItem({
@@ -37,11 +39,9 @@ class Builder extends Component {
     }
     
     render() {
-        // console.log(this.props.location);
         let ingredientList, builderControls;
 
         // ingredient List
-        // const ingredientArray = Object.entries(this.props.ingredients.ingredients);
         const ingredientArray = this.props.ingredients.ingredients;
         if (ingredientArray.length < 1) {
             ingredientList = (<h6>Empty</h6>)
@@ -77,8 +77,16 @@ class Builder extends Component {
                     }))
         }
 
-        return (
-            <div className={classes.builder}>
+        // rendered content
+        let rendered = (
+            <div className={`${classes.builder} ${classes.spinner}`}>
+                <Spinner/>
+            </div>
+            
+        );
+        if (!this.props.ingredientsDB.loading) {
+            rendered = (
+                <div className={classes.builder}>
                 <Card>
                     <div className={classes.cardTitle}>Mario's Sandwich</div>
                     {(ingredientArray.length >= 1) && (<div className={classes.basePrice}>
@@ -106,8 +114,10 @@ class Builder extends Component {
                         <Button disabled={ingredientArray.length < 1}>order now</Button>
                 </div>
             </div>
-            
-        )
+            )
+        }
+
+        return rendered;
     }
 }
 
@@ -116,10 +126,10 @@ const mapStatetoProps = (state) => {
             ingredients: state.ingredients}
 }
 
-export default connect(mapStatetoProps,{
+export default (withAxios(connect(mapStatetoProps,{
     setInitTotalPrice,
     fetchIngredientsFromDB,
     fetchBasePriceFromDB,
     clearIngredients,
     addCartItem
-})(Builder);
+})(Builder),axios));

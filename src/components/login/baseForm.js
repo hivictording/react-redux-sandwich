@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import {withRouter,Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 import Button from '../../UI/Button'
 import Input from '../../UI/Input'
 import classes from './baseForm.module.css'
-
-import {connect} from 'react-redux'
 import {userRegistration,userLogin} from '../../store/actions/user'
-
 import {checkValidation} from '../../utils/formUtils'
+import withAxios from '../../hoc/withAxios'
+import axios from '../../utils/axios/axiosLocal'
+import Spinner from '../../UI/Spinner'
 
 class BaseForm extends Component {
 
@@ -74,26 +75,27 @@ class BaseForm extends Component {
         const sortedFields = this.state.formFields.sort((a,b)=>a.id < b.id ? -1 : 1)
 
         return (
-        <div className="row">
-            <div className={`${classes.form} col-10 col-md-9 col-lg-7 mx-auto py-2 px-4`}>
-                <form className='my-3'>
-                    {sortedFields.map((field) => {
-                        return <Input {...field} changed={this.changeHandler} key={field.id}/>
-                               
-                    })}
+            <div className="row">
+                <div className={`${classes.form} col-10 col-md-9 col-lg-7 mx-auto py-2 px-4`}>
+                    <form className='my-3'>
+                        {sortedFields.map((field) => {
+                            return <Input {...field} changed={this.changeHandler} key={field.id}/>
+                                
+                        })}
 
-                    {this.props.currentUser.error && <p className="text-danger text-capitalize">username or password is not correct...</p>}
-                    
-                    <div className="w-100">
-                        <Button size="large" clicked={this.submitHandler}>login</Button>
-                    </div>
-                    <div className={classes.buttonSubmitWrapper}>
-                <button className={classes.buttonSubmit} onClick={this.props.newUserHandler}>{this.props.text}</button>
-                    </div>
-                    
-                </form>
+                        {this.props.currentUser.error && <p className="text-danger text-capitalize">username or password is not correct...</p>}
+                        
+                        <div className="w-100">
+                            <Button size="large" clicked={this.submitHandler}>login</Button>
+                        </div>
+                        <div className={classes.buttonSubmitWrapper}>
+                            <button className={classes.buttonSubmit} onClick={this.props.newUserHandler}>   {this.props.text}
+                            </button>
+                        </div>
+                        
+                    </form>
+                </div>
             </div>
-        </div>
     )
     }
 }
@@ -103,4 +105,4 @@ const mapStateToProps = (state) => {
         currentUser: state.user
     }
 }
-export default withRouter(connect(mapStateToProps,{userRegistration,userLogin})(BaseForm))
+export default withRouter(withAxios(connect(mapStateToProps,{userRegistration,userLogin})(BaseForm),axios))

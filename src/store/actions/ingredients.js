@@ -2,15 +2,24 @@ import * as Actions from './actions';
 
 import axiosLocal from '../../utils/axios/axiosLocal'
 
+const setLoading = () => {
+    return {type:Actions.SET_LOADING}
+}
+
+const clearLoading = () => {
+    return {type:Actions.CLEAR_LOADING}
+}
+
 const fetchIngredientsFromDB = () => {
     return async (dispatch) => {
+        dispatch(setLoading());
         try {
-            
-            let response = await axiosLocal.get('/ingredientssss');
+            let response = await axiosLocal.get('/ingredients');
             dispatch(setInitIngredients(response.data));
         } catch (error) {
             console.log(error);
         }
+        dispatch(clearLoading());
     }
 };
 
