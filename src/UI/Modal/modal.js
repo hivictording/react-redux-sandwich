@@ -7,7 +7,7 @@ export default ({title,confirmText,cancelText,confirm,cancel}) => {
     return (
         <div className={classes.modal}>
             <div className="row">
-                <div className="col mx-auto mb-3 text-center">
+                <div className="col-11 mx-auto mb-3 text-center">
                     {title}
                 </div>
                 <div className="col-10 mx-auto d-flex justify-content-around">

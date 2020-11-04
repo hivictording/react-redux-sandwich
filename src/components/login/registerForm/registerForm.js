@@ -53,4 +53,4 @@ const formFields = [
 
 const text = 'existing user? login here!'
 
-export default withForm(baseForm,formFields,"registration",text)
+export default withForm(baseForm,formFields,"register",text)

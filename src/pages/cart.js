@@ -30,7 +30,8 @@ class Cart extends Component {
     }
 
     render() {
-        let myCart = this.props.cart.find(item => item.user === 'mario');
+        const currentUser = Object.entries(this.props.currentUser).length >=1 ? this.props.currentUser.username : "guest"
+        let myCart = this.props.cart.find(item => item.user === currentUser);
         let cartTotalPrice;
 
         if (myCart) {
@@ -106,7 +107,7 @@ class Cart extends Component {
                     <div>
                         <BackDrop clicked={this.toggleModal}/>
                         
-                        <Modal title="ronaldo is a stupid guy and is watching secomani cat vs dogss" 
+                        <Modal title="do you want to clear the cart?" 
                                 confirmText="Yes" 
                                 cancelText="Cancel" 
                                 confirm={() => {
@@ -123,7 +124,8 @@ class Cart extends Component {
 
 const mapStatetoProps = (state) => {
     return {
-        cart: state.cart
+        cart: state.cart,
+        currentUser: state.user.user,
     }
 }
 

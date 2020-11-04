@@ -14,7 +14,18 @@ import Spinner from '../../UI/Spinner'
 class BaseForm extends Component {
 
     state = {
-        formFields: this.props.formFields
+        formFields: this.props.formFields.map(formField => {
+            return {...formField}
+        })
+    }
+
+    fieldRefs = [];
+
+    addRefHandler = (field) => {
+        if (field && !this.fieldRefs.find(f => f.name === field.name)) {
+            this.fieldRefs = [...this.fieldRefs,field];
+        }
+        
     }
 
     changeHandler = (event) => {
@@ -47,12 +58,26 @@ class BaseForm extends Component {
         return true;   
     }
 
+    formReset = () => {
+
+        for (const field of this.fieldRefs) {
+            field.value = '';
+        }
+
+        this.fieldRefs[0].focus();
+    }
+
+    resetHandler = (event) => {
+        event.preventDefault();
+        this.formReset()
+    }
+
     submitHandler = (event) => {
         event.preventDefault();
 
         if(this.checkForm()) {
             
-            if (this.props.formType === "registration") {
+            if (this.props.formType === "register") {
                 const username = this.state.formFields.find(field => field.name==='username').value;
                 const email = this.state.formFields.find(field => field.name==='email').value;
                 const password = this.state.formFields.find(field => field.name==='password').value;
@@ -64,8 +89,12 @@ class BaseForm extends Component {
                 this.props.userLogin(username,password)
             }
 
-            // this.props.history.push('/');
         }
+    }
+
+    componentDidMount() {
+        
+        this.fieldRefs[0].focus();
     }
 
     render() {
@@ -74,19 +103,28 @@ class BaseForm extends Component {
         }
         const sortedFields = this.state.formFields.sort((a,b)=>a.id < b.id ? -1 : 1)
 
+        if (this.props.currentUser.loading) {
+            return <Spinner/>
+        }
+
         return (
             <div className="row">
                 <div className={`${classes.form} col-10 col-md-9 col-lg-7 mx-auto py-2 px-4`}>
                     <form className='my-3'>
                         {sortedFields.map((field) => {
-                            return <Input {...field} changed={this.changeHandler} key={field.id}/>
+                            return <Input {...field} changed={this.changeHandler} addRef={this.addRefHandler} key={field.id}/>
                                 
                         })}
 
                         {this.props.currentUser.error && <p className="text-danger text-capitalize">username or password is not correct...</p>}
                         
-                        <div className="w-100">
-                            <Button size="large" clicked={this.submitHandler}>login</Button>
+                        <div className="w-100 d-flex justify-content-between">
+                            <Button  size="medium" clicked={this.submitHandler}>
+                                {this.props.formType}
+                            </Button>
+                            <Button size="medium" clicked={this.resetHandler}>
+                                reset
+                            </Button>
                         </div>
                         <div className={classes.buttonSubmitWrapper}>
                             <button className={classes.buttonSubmit} onClick={this.props.newUserHandler}>   {this.props.text}

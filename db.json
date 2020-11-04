@@ -102,6 +102,12 @@
       "email": "mding@outlook.com",
       "password": "12345678",
       "id": "494ff6c2-7ef1-418b-b971-e3d0bd72c60d"
+    },
+    {
+      "username": "himary",
+      "email": "ruhuizhu@outlook.com",
+      "password": "password",
+      "id": "f605849c-96dc-4f28-9089-9b39ef65e2d3"
     }
   ]
 }

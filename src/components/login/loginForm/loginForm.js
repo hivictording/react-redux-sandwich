@@ -14,8 +14,8 @@ const formFields =[
                 value:'',
                 rules:[
                     {isRequired: true},
-                    {minLength: 8},
-                    {maxLength: 12},
+                    {minLength: 5},
+                    {maxLength: 10},
                 ],
                 error: {status:false,message:[]}
             },

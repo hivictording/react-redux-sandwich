@@ -1,4 +1,4 @@
-import {SET_CURRENT_USER, SET_CURRENT_USER_ERROR,SET_CURRENT_USER_TO_EMPTY} from './actions';
+import {SET_CURRENT_USER, SET_CURRENT_USER_ERROR,SET_CURRENT_USER_TO_EMPTY,SET_USER_LOADING,CLEAR_USER_LOADING} from './actions';
 
 import {v4 as uuid} from 'uuid';
 import axios from '../../utils/axios/axiosLocal';
@@ -15,8 +15,16 @@ const setCurrentUserError = () => {
     }
 }
 
+const setUserLoading = () => {
+    return {type: SET_USER_LOADING}
+}
+const clearUserLoading = () => {
+    return {type: CLEAR_USER_LOADING}
+}
+
 const userRegistration = (user) => {
     return async (dispatch) => {
+        dispatch(setUserLoading())
         try {
             const updatedUser = {...user,id:uuid()};
             const response = await axios.post('/users',updatedUser);
@@ -24,11 +32,14 @@ const userRegistration = (user) => {
         } catch (error) {
             console.log('Register user failed');
         }
+        dispatch(clearUserLoading())
     }
 }
 
 const userLogin = (username,password) => {
+    
     return async (dispatch) => {
+        dispatch(setUserLoading())
         try {
             const response = await axios.get(`/users?username=${username}&password=${password}`)
             if (response.data.length >= 1) {
@@ -40,6 +51,7 @@ const userLogin = (username,password) => {
         } catch (error) {
             console.log(error)
         }
+        dispatch(clearUserLoading())
     }
 }
 

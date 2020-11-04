@@ -1,7 +1,7 @@
 import classes from './input.module.css'
 import React from 'react'
 
-const input = ({name,fieldType,fieldConfig:{type,placeholder},value,error,changed}) => {
+const input = ({name,fieldType,fieldConfig:{type,placeholder},value,error,changed,addRef}) => {
     // console.log(error,name);
 
     switch (fieldType) {
@@ -15,7 +15,8 @@ const input = ({name,fieldType,fieldConfig:{type,placeholder},value,error,change
                             name={name}
                             id={name}
                             value={value}
-                            onChange={changed}>
+                            onChange={changed}
+                            ref={field => addRef(field)}>
                         </input>
                         {error.status && <span>{error.message}</span>}
                     </div>

@@ -11,6 +11,10 @@
   font-size: 0.8em;
 }
 
+.button.medium {
+  width: 40%;
+}
+
 .button.large {
   width: 100%;
 }

@@ -6,6 +6,8 @@ const Button = ({clicked,disabled,children,size}) => {
     let classList = [classes.button];
     if (size === 'large') {
         classList.push(classes.large)
+    } else if (size === 'medium') {
+        classList.push(classes.medium)
     }
 
     return (

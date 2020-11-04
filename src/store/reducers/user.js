@@ -17,6 +17,12 @@ const userReducer = (state=initState,action) => {
         case (ActionTypes.SET_CURRENT_USER_TO_EMPTY): {
             return {...state,user:{},error:false}
         }
+        case (ActionTypes.SET_USER_LOADING): {
+            return {...state,loading:true}
+        }
+        case (ActionTypes.CLEAR_USER_LOADING): {
+            return {...state,loading:false}
+        }
         default:
             return state;
     }

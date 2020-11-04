@@ -6,9 +6,11 @@ import Modal from '../../UI/Modal'
 const withAxios = (WrappedComponent,axios) => {
     
     return class extends Component {
+
         state = {
-            errorMsg: null
-        }
+                errorMsg: null
+            }
+        
 
         clearError = () => {
             this.setState({
@@ -17,11 +19,11 @@ const withAxios = (WrappedComponent,axios) => {
         }
 
         componentWillMount() {
-            axios.interceptors.request.use((request) => {
+            this.requestInterceptor = axios.interceptors.request.use((request) => {
                 this.setState({errorMsg:null})
                 return request;
             });
-            axios.interceptors.response.use(response => {
+            this.responseInterceptor = axios.interceptors.response.use(response => {
                 // console.log(response);
                 if (!response) {
                     this.setState({
@@ -35,6 +37,11 @@ const withAxios = (WrappedComponent,axios) => {
                     errorMsg: `Error with ${error.config.baseURL}`
                 });
             })
+        }
+
+        componentWillUnmount() {
+            axios.interceptors.request.eject(this.requestInterceptor);
+            axios.interceptors.response.eject(this.responseInterceptor);
         }
         
         render() {

@@ -17,8 +17,9 @@ import classes from './builder.module.css'
 class Builder extends Component {
 
     addToCartHandler = (sandwich,totalPrice) => {
+        const currentUser = Object.entries(this.props.currentUser).length >=1 ? this.props.currentUser.username : "guest"
         this.props.addCartItem({
-            user:'mario',
+            user: currentUser,
             sandwich,
             totalPrice
         });
@@ -123,7 +124,8 @@ class Builder extends Component {
 
 const mapStatetoProps = (state) => {
     return {ingredientsDB: state.ingredientsDB,
-            ingredients: state.ingredients}
+            ingredients: state.ingredients,
+            currentUser: state.user.user}
 }
 
 export default (withAxios(connect(mapStatetoProps,{
