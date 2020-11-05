@@ -12,6 +12,7 @@ import UserReducer from './store/reducers/user'
 import Layout from './pages/layout'
 import Builder from './pages/builder'
 import Cart from './pages/cart'
+import OrderForm from './pages/orderForm'
 import Orders from './pages/orders'
 import Login from './pages/login'
 import Default from './pages/default'
@@ -43,6 +44,9 @@ function App() {
               </Route>
               <Route exact path="/login" render={(routeProps) => <Login {...routeProps}/>}>
                 {/* <Login/> */}
+              </Route>
+              <Route exact path="/orderform" render={(routeProps) => <OrderForm {...routeProps}/>}>
+                {/* <OrderForm/> */}
               </Route>
               <Route exact path="/orders">
                 <Orders/>

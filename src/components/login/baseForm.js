@@ -22,6 +22,7 @@ class BaseForm extends Component {
     fieldRefs = [];
 
     addRefHandler = (field) => {
+        console.log(field);
         if (field && !this.fieldRefs.find(f => f.name === field.name)) {
             this.fieldRefs = [...this.fieldRefs,field];
         }
@@ -93,12 +94,14 @@ class BaseForm extends Component {
     }
 
     componentDidMount() {
+        console.log(this.fieldRefs)
         
         this.fieldRefs[0].focus();
     }
 
     render() {
-        if (!this.props.currentUser.error && Object.entries(this.props.currentUser.user).length >=1) {
+        console.log('test form.....');
+        if (!(this.props.formType === 'order') && !this.props.currentUser.error && Object.entries(this.props.currentUser.user).length >=1) {
             return <Redirect to="/"/>
         }
         const sortedFields = this.state.formFields.sort((a,b)=>a.id < b.id ? -1 : 1)

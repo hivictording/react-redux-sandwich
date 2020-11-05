@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
-
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 import {FaTimes} from 'react-icons/fa'
 
 import Button from '../UI/Button'
@@ -27,6 +27,15 @@ class Cart extends Component {
             ...this.state,
             confirmClearCart: true
         })
+    }
+
+    orderHandler = () => {
+        if (Object.entries(this.props.currentUser).length >= 1) {
+            console.log('go to order-form');
+            this.props.history.push("/orderform");
+        } else {
+            this.props.history.push("/login");
+        }
     }
 
     render() {
@@ -90,7 +99,7 @@ class Cart extends Component {
                         <Button clicked={this.openModal}>
                             clear cart
                         </Button>
-                        <Button>
+                        <Button clicked={this.orderHandler}>
                             proceed to order
                         </Button>
                     </div>}
@@ -129,7 +138,7 @@ const mapStatetoProps = (state) => {
     }
 }
 
-export default connect(mapStatetoProps,{
+export default withRouter(connect(mapStatetoProps,{
     removeCartItem,
     clearCart
-})(Cart);
+})(Cart));

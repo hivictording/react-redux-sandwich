@@ -5,8 +5,9 @@ import {connect} from 'react-redux'
 import NavLink from '../../navLink/navLink'
 import classes from './navCart.module.css'
 
-const NavCart = ({cart}) => {
-    const myCart = cart.find(item => item.user === 'mario');
+const NavCart = ({cart,currentUser}) => {
+    const username = Object.entries(currentUser).length >=1 ? currentUser.username : 'guest'
+    const myCart = cart.find(item => item.user === username);
     let sandwichNumber;
     if (myCart) {
         sandwichNumber = myCart.sandwichList.length;
@@ -28,7 +29,8 @@ const NavCart = ({cart}) => {
 
 const mapStatetoProps =(state) => {
     return {
-        cart: state.cart
+        cart: state.cart,
+        currentUser: state.user.user
     }
 }
 
