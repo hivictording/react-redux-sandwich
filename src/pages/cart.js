@@ -6,6 +6,7 @@ import {FaTimes} from 'react-icons/fa'
 import Button from '../UI/Button'
 import BackDrop from '../components/backDrop'
 import Modal from '../UI/Modal'
+import OrderForm from '../components/cart/orderForm'
 import {removeCartItem,clearCart} from '../store/actions/cart'
 
 import classes from './cart.module.css'
@@ -14,12 +15,13 @@ import sandwichImg from '../static/images/sandwich.jpg'
 class Cart extends Component {
     
     state = {
-        confirmClearCart: false
+        confirmClearCart: false,
+        isOrdering: false
     }
 
     toggleModal = () => {
         this.setState((prevState) => {
-                            return {confirmClearCart: !prevState.confirmClearCart}
+                            return {...prevState,confirmClearCart: !prevState.confirmClearCart}
                         })
     }
     openModal = () => {
@@ -32,7 +34,10 @@ class Cart extends Component {
     orderHandler = () => {
         if (Object.entries(this.props.currentUser).length >= 1) {
             console.log('go to order-form');
-            this.props.history.push("/orderform");
+            this.setState({
+                ...this.state,
+                isOrdering: true
+            })
         } else {
             this.props.history.push("/login");
         }
@@ -82,6 +87,13 @@ class Cart extends Component {
             );
         }
 
+        // proceed to order if this.state.isOrdering === true
+
+        if (this.state.isOrdering && currentUser !== 'guest') {
+            return <div className="py-3">
+                    <OrderForm/>
+                </div>
+        }
 
         return <div className={`py-3`}>
             <div className="container-fluid">

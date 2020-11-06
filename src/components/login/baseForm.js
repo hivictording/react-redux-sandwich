@@ -22,22 +22,48 @@ class BaseForm extends Component {
     fieldRefs = [];
 
     addRefHandler = (field) => {
-        console.log(field);
-        if (field && !this.fieldRefs.find(f => f.name === field.name)) {
-            this.fieldRefs = [...this.fieldRefs,field];
+        if (!field) return;
+
+        switch (field.tagName) {
+            case ('INPUT'): {
+                if (field.type === 'text' || field.type === 'password' || field.type === 'email') {
+                    if (!this.fieldRefs.find(f => f.name === field.name)) {
+                        this.fieldRefs = [...this.fieldRefs,field];
+                    }
+                } else if (field.type === 'radio') {
+                    if (!this.fieldRefs.find(f => f.name === field.name && f.value === field.value)) {
+                        this.fieldRefs = [...this.fieldRefs,field];
+                    }
+                }
+            break;
+            }
+
+            case ('SELECT'): {
+                break;
+            }
+
+            default: {
+                return
+            }
         }
+
+
         
     }
 
     changeHandler = (event) => {
-        const currentField = this.state.formFields.find(field => field.name === event.target.name);
-        const filteredFields = this.state.formFields.filter(field => field.name !== event.target.name);
-        currentField.value = event.target.value;
-        
-        this.setState({
-            ...this.state,
-            formFields:[...filteredFields,currentField]
-        })
+        if (event.target.tagName === 'INPUT') {
+            const currentField = this.state.formFields.find(field => field.name === event.target.name || field.fieldConfig.name === event.target.name);
+            const filteredFields = this.state.formFields.filter(field => field.name !== currentField.name);
+            currentField.value = event.target.value;
+                
+            this.setState({
+                ...this.state,
+                formFields:[...filteredFields,currentField]
+            }) 
+        } else if (event.target.tagName === 'SELECT') {
+            return
+        }
     }
 
     checkForm = () => {
@@ -100,7 +126,6 @@ class BaseForm extends Component {
     }
 
     render() {
-        console.log('test form.....');
         if (!(this.props.formType === 'order') && !this.props.currentUser.error && Object.entries(this.props.currentUser.user).length >=1) {
             return <Redirect to="/"/>
         }

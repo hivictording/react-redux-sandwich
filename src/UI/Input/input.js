@@ -2,7 +2,6 @@ import classes from './input.module.css'
 import React from 'react'
 
 const input = ({name,fieldType,fieldConfig,value,error,changed,addRef}) => {
-    // console.log(error,name);
 
     switch (fieldType) {
         case ('input'): {
@@ -22,15 +21,16 @@ const input = ({name,fieldType,fieldConfig,value,error,changed,addRef}) => {
                     </div>
             } 
         case ('radio'): {
-                return <div class="form-group">
-                    <label htmlFor={fieldConfig.name} className="mr-3">Delivery:</label>
+                return <div className="form-group">
+                    <label htmlFor={fieldConfig.name} className="mr-3">{name}</label>
                     {fieldConfig.values.map(val => {
                             return (
-                                        <div className="form-check form-check-inline" key={name}>
+                                        <div className="form-check form-check-inline" key={val}>
                                             <input type={fieldType} 
                                                         className="form-check-input"
                                                         name={fieldConfig.name}
                                                         value={val}
+                                                        checked={value===val}
                                                         onChange={changed}
                                                         ref={field => addRef(field)}>
                                             </input>

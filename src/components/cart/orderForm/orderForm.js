@@ -1,5 +1,5 @@
-import baseForm from '../login/baseForm'
-import withForm from '../login/withForm';
+import baseForm from '../../login/baseForm'
+import withForm from '../../login/withForm'
 
 const formFields = [
             {
