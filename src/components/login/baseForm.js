@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {withRouter,Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {cloneDeep} from 'lodash'
 
 import Button from '../../UI/Button'
 import Input from '../../UI/Input'
@@ -14,9 +15,10 @@ import Spinner from '../../UI/Spinner'
 class BaseForm extends Component {
 
     state = {
-        formFields: this.props.formFields.map(formField => {
-            return {...formField}
-        })
+        // formFields: this.props.formFields.map(formField => {
+        //     return {...formField}
+        // })
+        formFields: cloneDeep(this.props.formFields)
     }
 
     fieldRefs = [];
@@ -87,9 +89,15 @@ class BaseForm extends Component {
 
     formReset = () => {
 
-        for (const field of this.fieldRefs) {
-            field.value = '';
-        }
+        const formFields = cloneDeep(this.state.formFields)
+
+        const updatedFormfields = formFields.map(field => {
+            return {...field, value: ''}
+        });
+
+        this.setState({
+            formFields: updatedFormfields
+        })
 
         this.fieldRefs[0].focus();
     }

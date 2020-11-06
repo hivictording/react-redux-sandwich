@@ -17,7 +17,6 @@ const input = ({name,fieldType,fieldConfig,value,error,changed,addRef}) => {
                             onChange={changed}
                             ref={field => addRef(field)}>
                         </input>
-                        {error.status && <span>{error.message}</span>}
                     </div>
             } 
         case ('radio'): {
@@ -36,10 +35,10 @@ const input = ({name,fieldType,fieldConfig,value,error,changed,addRef}) => {
                                             </input>
                                             <label htmlFor={fieldConfig.name} className="form-check-label text-capitalize">{val}
                                             </label>
-                                            {error.status && <span>{error.message}</span>}
                                         </div>
                                     )
                         })}
+                    {error.status && <div className={classes.errorMsg}>{error.message}</div>}
                 </div>
                 
         }
