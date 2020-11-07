@@ -21,7 +21,7 @@ const input = ({name,fieldType,fieldConfig,value,error,changed,addRef}) => {
             } 
         case ('radio'): {
                 return <div className="form-group">
-                    <label htmlFor={fieldConfig.name} className="mr-3">{name}</label>
+                    <label htmlFor={fieldConfig.name} className="mr-3 text-capitalize">{name}</label>
                     {fieldConfig.values.map(val => {
                             return (
                                         <div className="form-check form-check-inline" key={val}>
@@ -39,8 +39,29 @@ const input = ({name,fieldType,fieldConfig,value,error,changed,addRef}) => {
                                     )
                         })}
                     {error.status && <div className={classes.errorMsg}>{error.message}</div>}
-                </div>
-                
+                </div> 
+        }
+        case ('checkbox'): {
+                return <div className="form-group">
+                    <label htmlFor={fieldConfig.name} className="mr-3 text-capitalize">{name}</label>
+                    {fieldConfig.values.map(val => {
+                            return (
+                                        <div className="form-check form-check-inline" key={val}>
+                                            <input type={fieldType} 
+                                                        className="form-check-input"
+                                                        name={fieldConfig.name}
+                                                        value={val}
+                                                        checked={value.find(v => v === val) ? true:false}
+                                                        onChange={changed}
+                                                        ref={field => addRef(field)}>
+                                            </input>
+                                            <label htmlFor={fieldConfig.name} className="form-check-label text-capitalize">{val}
+                                            </label>
+                                        </div>
+                                    )
+                        })}
+                    {error.status && <div className={classes.errorMsg}>{error.message}</div>}
+                </div> 
         }
 
         default:

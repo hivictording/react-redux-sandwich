@@ -57,7 +57,18 @@ class BaseForm extends Component {
         if (event.target.tagName === 'INPUT') {
             const currentField = this.state.formFields.find(field => field.name === event.target.name || field.fieldConfig.name === event.target.name);
             const filteredFields = this.state.formFields.filter(field => field.name !== currentField.name);
-            currentField.value = event.target.value;
+            if (event.target.type === 'checkbox') {
+                const currentValue = currentField.value;
+                if (currentValue.includes(event.target.value)) {
+                    currentField.value = currentValue.filter(v => v !== event.target.value);
+                } else {
+                    currentField.value = [...currentValue,event.target.value];
+                }
+                
+            } else {
+                currentField.value = event.target.value;
+            }
+            
                 
             this.setState({
                 ...this.state,

@@ -32,6 +32,20 @@ const formFields = [
                 ],
                 error: {status:false,message:[]}
             },
+            {
+                id:3,
+                name: 'delivery time',
+                fieldType: 'checkbox',
+                fieldConfig: {
+                    name: 'deliveryTime',
+                    values: ['morning','afternoon','evening']
+                },
+                value: [],
+                rules:[
+                    {isRequired: true},
+                ],
+                error: {status:false,message:[]}
+            },
         ]
 
 

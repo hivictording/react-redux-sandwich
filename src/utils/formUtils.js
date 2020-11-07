@@ -10,9 +10,16 @@ function checkValidation(name,value,rules) {
         switch (ruleName) {
             case ("isRequired"): {
                 if (!ruleValue) return error;
-                if (!value.trim()) {
+                if (value instanceof Array) {
+                    if (value.length === 0) {
+                        error = {...error,status:true,message:[...error.message,`${name} can not be empty`]}
+                    }
+                } else {
+                    if (!value.trim()) {
                     error = {...error,status:true,message:[...error.message,`${name} can not be empty`]}
                 }
+                }
+                
                 break;
             } 
 
