@@ -46,6 +46,21 @@ const formFields = [
                 ],
                 error: {status:false,message:[]}
             },
+            {
+                id:4,
+                name: 'delivery location',
+                fieldType: 'select',
+                fieldConfig: {
+                    name: 'deliveryLocation',
+                    type: 'single',
+                    values: ['house','street','neighbour']
+                },
+                value: [],
+                rules:[
+                    {isRequired: true},
+                ],
+                error: {status:false,message:[]}
+            },
         ]
 
 

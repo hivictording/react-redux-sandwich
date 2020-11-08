@@ -64,6 +64,47 @@ const input = ({name,fieldType,fieldConfig,value,error,changed,addRef}) => {
                 </div> 
         }
 
+        case ('select'): {
+            let select;
+            const options = fieldConfig.values.map((val) => {
+                // if (fieldConfig.type === 'multiple') {
+                //     if (value.includes(val)) {
+                //         console.log('included');
+                //         return <option key={val} value={val} selected>{val}</option>
+                //     } else {
+                //         console.log('not included');
+                //          return <option key={val} value={val}>{val}</option> 
+                //     }                   
+                // } else {
+                //      return (
+                //         <option key={val} value={val}>{val}</option>
+                //     )
+                // }
+
+                return <option key={val} value={val}>{val}</option>
+                }) 
+                    
+
+            if (fieldConfig.type === 'multiple') {
+                select = (<select name={fieldConfig.name} onChange={changed} value={value} multiple>
+                            {/* <option selected>{name}</option> */}
+                            {options}
+                        </select>);
+            }
+            else {
+                select = (<select name={fieldConfig.name} onChange={changed} value={value[0]}>
+                            <option disabled>{name}</option>
+                            {options}
+                        </select>);
+            };
+
+            return <div className="form-group">
+                        <label htmlFor={fieldConfig.name} className="mr-3 text-capitalize">{name}</label>
+                        {select}
+                        {error.status && <div className={classes.errorMsg}>{error.message}</div>}
+            </div>
+        }
+
         default:
             return <div>Default Input</div>
     }

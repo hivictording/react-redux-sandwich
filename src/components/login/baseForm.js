@@ -54,6 +54,7 @@ class BaseForm extends Component {
     }
 
     changeHandler = (event) => {
+        console.log(event.target.tagName);
         if (event.target.tagName === 'INPUT') {
             const currentField = this.state.formFields.find(field => field.name === event.target.name || field.fieldConfig.name === event.target.name);
             const filteredFields = this.state.formFields.filter(field => field.name !== currentField.name);
@@ -75,7 +76,22 @@ class BaseForm extends Component {
                 formFields:[...filteredFields,currentField]
             }) 
         } else if (event.target.tagName === 'SELECT') {
-            return
+            // console.log(event.target);
+            const currentField = this.state.formFields.find(field => field.name === event.target.name || field.fieldConfig.name === event.target.name);
+            const filteredFields = this.state.formFields.filter(field => field.name !== currentField.name);
+            const currentValue = currentField.value;
+            console.log(currentValue);
+            console.log(event.target.value);
+            if (currentValue.includes(event.target.value)) {
+                currentField.value = currentValue.filter(v => v !== event.target.value);
+            } else {
+                currentField.value = [...currentValue,event.target.value];
+            }
+            
+            this.setState({
+                ...this.state,
+                formFields:[...filteredFields,currentField]
+            }) 
         }
     }
 
