@@ -45,9 +45,24 @@ const formFields = [
                     {isRequired: true},
                 ],
                 error: {status:false,message:[]}
-            },
+            },          
             {
                 id:4,
+                name: 'delivery day',
+                fieldType: 'select',
+                fieldConfig: {
+                    name: 'deliveryDay',
+                    type: 'multiple',
+                    values: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+                },
+                value: [],
+                rules:[
+                    {isRequired: true},
+                ],
+                error: {status:false,message:[]}
+            },
+            {
+                id:5,
                 name: 'delivery location',
                 fieldType: 'select',
                 fieldConfig: {

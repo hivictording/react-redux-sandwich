@@ -41,7 +41,9 @@ class BaseForm extends Component {
             }
 
             case ('SELECT'): {
-                break;
+                if (!this.fieldRefs.find(f => f.name === field.name)) {
+                        this.fieldRefs = [...this.fieldRefs,field];
+                };
             }
 
             default: {
@@ -54,7 +56,7 @@ class BaseForm extends Component {
     }
 
     changeHandler = (event) => {
-        console.log(event.target.tagName);
+        // console.log(event.target.tagName);
         if (event.target.tagName === 'INPUT') {
             const currentField = this.state.formFields.find(field => field.name === event.target.name || field.fieldConfig.name === event.target.name);
             const filteredFields = this.state.formFields.filter(field => field.name !== currentField.name);
@@ -79,14 +81,16 @@ class BaseForm extends Component {
             // console.log(event.target);
             const currentField = this.state.formFields.find(field => field.name === event.target.name || field.fieldConfig.name === event.target.name);
             const filteredFields = this.state.formFields.filter(field => field.name !== currentField.name);
-            const currentValue = currentField.value;
-            console.log(currentValue);
-            console.log(event.target.value);
-            if (currentValue.includes(event.target.value)) {
-                currentField.value = currentValue.filter(v => v !== event.target.value);
-            } else {
-                currentField.value = [...currentValue,event.target.value];
-            }
+            // const currentValue = currentField.value;
+            // console.log(currentField.value);
+            // console.log(event.target.value);
+            // console.log(filteredFields);
+            // if (currentField.fieldConfig.type === "single") {
+            //     currentField.value[0] = event.target.value;
+            // } else {
+                currentField.value = [...event.target.selectedOptions].map(option => option.value)
+            // }
+            
             
             this.setState({
                 ...this.state,
@@ -119,7 +123,17 @@ class BaseForm extends Component {
         const formFields = cloneDeep(this.state.formFields)
 
         const updatedFormfields = formFields.map(field => {
-            return {...field, value: ''}
+            if (field.value instanceof Array ) {
+                if (field.value.length === 1) {
+                    return {...field, value: Array.of(field.name)}
+                } else {
+                    return {...field, value: []}
+                }
+                
+            } else {
+                return {...field, value: ''}
+            }
+            
         });
 
         this.setState({
