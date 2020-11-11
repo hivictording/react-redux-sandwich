@@ -27,7 +27,7 @@ function App() {
     ingredientsDB: IngridentsDBReducer,
     cart: CartReducer,
     user: UserReducer,
-    orders: OrderReducer
+    saveOrder: OrderReducer
   })
 
   const store = createStore(parentReducer,composeEnhancers(applyMiddleware(...middleware)));

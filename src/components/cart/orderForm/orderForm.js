@@ -70,7 +70,7 @@ const formFields = [
                     type: 'single',
                     values: ['house','street','neighbour']
                 },
-                value: [],
+                value: ['house'],
                 rules:[
                     {isRequired: true},
                 ],

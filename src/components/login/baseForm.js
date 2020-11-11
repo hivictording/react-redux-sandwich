@@ -171,8 +171,6 @@ class BaseForm extends Component {
                 const order = {shipInfo,sandwiches}
 
                 this.props.saveOrder(user, order)
-
-                // this.props.saveOrder(this.props.currentUser.user.username,)
                 
             } else {
                 return;
@@ -196,6 +194,16 @@ class BaseForm extends Component {
 
         if (this.props.currentUser.loading) {
             return <Spinner/>
+        }
+        if (this.props.formType === 'order') {
+            if (this.props.orderStatus.loading) {
+                return <Spinner/>
+            } else {
+                if (this.props.orderStatus.status === 'succeed') {
+                    return <Redirect to="/"/>
+                }
+            }
+            
         }
 
         return (
@@ -232,7 +240,7 @@ class BaseForm extends Component {
 const mapStateToProps = (state) => {
     return {
         currentUser: state.user,
-        orders: state.orders,
+        orderStatus: state.saveOrder,
         cart: state.cart
     }
 }

@@ -9,18 +9,24 @@ const clearOrderLoading = () => {
     return {type: Actions.CLEAR_ORDER_LOADING}
 }
 
-// const setOrder = (user,order) => {
-
-// }
+const setOrderStatus = (status) => {
+    return {type: Actions.SET_ORDER_STATUS, payload: status}
+}
 
 
 const saveOrder = (user,order) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setOrderLoading());
         try {
-            axios.post('/orders',{user,order})
+            const response = await axios.post('/ordersssss',{user,order})
+            if (response) {
+                dispatch(setOrderStatus('succeed'))
+            } else {
+                dispatch(setOrderStatus('failure'));
+            }
+            
         } catch (error) {
-            console.log(error);
+            dispatch(setOrderStatus('failure'));
         }
 
         dispatch(clearOrderLoading());

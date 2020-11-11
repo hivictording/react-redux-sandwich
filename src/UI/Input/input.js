@@ -77,10 +77,10 @@ const input = ({name,fieldType,fieldConfig,value,error,changed,addRef}) => {
                         </select>);
             }
             else {
-                select = (<select className='custom-select' name={fieldConfig.name} onChange={changed} defaultValue={name}
+                select = (<select className='custom-select' name={fieldConfig.name} onChange={changed}
                 value={value[0]}
                 >
-                            <option value={name} disabled>{name}</option>
+                            {/* <option value={name} disabled>{name}</option> */}
                             {options}
                         </select>);
             };

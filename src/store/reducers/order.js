@@ -2,8 +2,7 @@ import * as Actions from '../actions/actions'
 
 const initState = {
     loading: false,
-    user: '',
-    orders: [],
+    status: ''
 };
 
 export default (state=initState,action) => {
@@ -13,6 +12,9 @@ export default (state=initState,action) => {
         }
         case (Actions.CLEAR_ORDER_LOADING): {
             return {...state, loading: false}
+        }
+        case (Actions.SET_ORDER_STATUS): {
+            return {...state, status: action.payload}
         }
         default:
             return state;
