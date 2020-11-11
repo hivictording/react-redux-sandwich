@@ -23,7 +23,7 @@ const formFields = [
                 name: 'delivery method',
                 fieldType: 'radio',
                 fieldConfig: {
-                    name: 'delivery',
+                    name: 'deliveryMethod',
                     values: ['regular','express','cheapest']
                 },
                 value:'',

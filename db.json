@@ -111,6 +111,138 @@
     }
   ],
   "orders": [
-    
+    {
+      "user": "hivictor",
+      "order": {
+        "shipInfo": {
+          "address": "12 Luzon Avenue, Ontario, Canada",
+          "deliveryMethod": "cheapest",
+          "deliveryTime": [
+            "evening",
+            "afternoon"
+          ],
+          "deliveryDay": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "deliveryLocation": [
+            "neighbour"
+          ]
+        },
+        "sandwiches": [
+          {
+            "totalPrice": 33.64,
+            "sandwichList": [
+              {
+                "id": "051e610e-9dae-4d95-a4f5-83efd73f0d20",
+                "sandwich": [
+                  {
+                    "name": "chicken",
+                    "count": 1,
+                    "unitPrice": 7.99,
+                    "totalPrice": 7.99
+                  },
+                  {
+                    "name": "red onion",
+                    "count": 1,
+                    "unitPrice": 1.99,
+                    "totalPrice": 1.99
+                  }
+                ],
+                "totalPrice": 10.99
+              },
+              {
+                "id": "7ac1752d-c9c0-4412-97dd-fc9356c0d98b",
+                "sandwich": [
+                  {
+                    "name": "egg",
+                    "count": 1,
+                    "unitPrice": 3.99,
+                    "totalPrice": 3.99
+                  },
+                  {
+                    "name": "cucumber",
+                    "count": 2,
+                    "unitPrice": 0.99,
+                    "totalPrice": 1.98
+                  },
+                  {
+                    "name": "pork",
+                    "count": 1,
+                    "unitPrice": 9.99,
+                    "totalPrice": 9.99
+                  },
+                  {
+                    "name": "brocolli",
+                    "count": 1,
+                    "unitPrice": 2.79,
+                    "totalPrice": 2.79
+                  },
+                  {
+                    "name": "green pepper",
+                    "count": 1,
+                    "unitPrice": 2.89,
+                    "totalPrice": 2.89
+                  }
+                ],
+                "totalPrice": 22.65
+              }
+            ]
+          }
+        ]
+      },
+      "id": 1
+    },
+    {
+      "user": "hivictor",
+      "order": {
+        "shipInfo": {
+          "address": "ogilvie street, halifax",
+          "deliveryMethod": "express",
+          "deliveryTime": [
+            "morning",
+            "evening"
+          ],
+          "deliveryDay": [
+            "Monday",
+            "Tuesday",
+            "Wednesday"
+          ],
+          "deliveryLocation": [
+            "house"
+          ]
+        },
+        "sandwiches": [
+          {
+            "totalPrice": 7.29,
+            "sandwichList": [
+              {
+                "id": "4e52c946-9179-433e-82d9-6242ecfa3616",
+                "sandwich": [
+                  {
+                    "name": "green pepper",
+                    "count": 1,
+                    "unitPrice": 2.89,
+                    "totalPrice": 2.89
+                  },
+                  {
+                    "name": "mushroom",
+                    "count": 1,
+                    "unitPrice": 3.39,
+                    "totalPrice": 3.39
+                  }
+                ],
+                "totalPrice": 7.29
+              }
+            ]
+          }
+        ]
+      },
+      "id": 2
+    }
   ]
 }

@@ -8,6 +8,7 @@ import IngridentsReducer from './store/reducers/ingredients'
 import IngridentsDBReducer from './store/reducers/ingredientsDB'
 import CartReducer from './store/reducers/cart'
 import UserReducer from './store/reducers/user'
+import OrderReducer from './store/reducers/order'
 
 import Layout from './pages/layout'
 import Builder from './pages/builder'
@@ -25,7 +26,8 @@ function App() {
     ingredients: IngridentsReducer,
     ingredientsDB: IngridentsDBReducer,
     cart: CartReducer,
-    user: UserReducer
+    user: UserReducer,
+    orders: OrderReducer
   })
 
   const store = createStore(parentReducer,composeEnhancers(applyMiddleware(...middleware)));

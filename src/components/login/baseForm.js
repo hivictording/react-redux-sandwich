@@ -7,6 +7,7 @@ import Button from '../../UI/Button'
 import Input from '../../UI/Input'
 import classes from './baseForm.module.css'
 import {userRegistration,userLogin} from '../../store/actions/user'
+import {saveOrder} from '../../store/actions/order'
 import {checkValidation} from '../../utils/formUtils'
 import withAxios from '../../hoc/withAxios'
 import axios from '../../utils/axios/axiosLocal'
@@ -81,16 +82,8 @@ class BaseForm extends Component {
             // console.log(event.target);
             const currentField = this.state.formFields.find(field => field.name === event.target.name || field.fieldConfig.name === event.target.name);
             const filteredFields = this.state.formFields.filter(field => field.name !== currentField.name);
-            // const currentValue = currentField.value;
-            // console.log(currentField.value);
-            // console.log(event.target.value);
-            // console.log(filteredFields);
-            // if (currentField.fieldConfig.type === "single") {
-            //     currentField.value[0] = event.target.value;
-            // } else {
-                currentField.value = [...event.target.selectedOptions].map(option => option.value)
-            // }
             
+            currentField.value = [...event.target.selectedOptions].map(option => option.value)            
             
             this.setState({
                 ...this.state,
@@ -163,6 +156,26 @@ class BaseForm extends Component {
                 const username = this.state.formFields.find(field => field.name==='username').value;
                 const password = this.state.formFields.find(field => field.name==='password').value;
                 this.props.userLogin(username,password)
+            } else if (this.props.formType === 'order') {
+                const address = this.state.formFields.find(field => field.name==='address').value;
+                const deliveryMethod = this.state.formFields.find(field => field.name==='deliveryMethod' || field.fieldConfig.name === 'deliveryMethod').value;
+                const deliveryTime = this.state.formFields.find(field => field.name==='deliveryTime' || field.fieldConfig.name === 'deliveryTime').value;
+                const deliveryDay = this.state.formFields.find(field => field.name==='deliveryDay' || field.fieldConfig.name === 'deliveryDay').value;
+                const deliveryLocation = this.state.formFields.find(field => field.name==='deliveryLocation' || field.fieldConfig.name === 'deliveryLocation').value;
+
+                const user = this.props.currentUser.user.username;
+                const shipInfo = {address,deliveryMethod,deliveryTime,deliveryDay,deliveryLocation}
+                const sandwiches = this.props.cart.map(c => {
+                    return {totalPrice: c.totalPrice, sandwichList: c.sandwichList}})
+
+                const order = {shipInfo,sandwiches}
+
+                this.props.saveOrder(user, order)
+
+                // this.props.saveOrder(this.props.currentUser.user.username,)
+                
+            } else {
+                return;
             }
 
         }
@@ -178,6 +191,7 @@ class BaseForm extends Component {
         if (!(this.props.formType === 'order') && !this.props.currentUser.error && Object.entries(this.props.currentUser.user).length >=1) {
             return <Redirect to="/"/>
         }
+        
         const sortedFields = this.state.formFields.sort((a,b)=>a.id < b.id ? -1 : 1)
 
         if (this.props.currentUser.loading) {
@@ -217,7 +231,10 @@ class BaseForm extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        currentUser: state.user
+        currentUser: state.user,
+        orders: state.orders,
+        cart: state.cart
     }
 }
-export default withRouter(withAxios(connect(mapStateToProps,{userRegistration,userLogin})(BaseForm),axios))
+
+export default withRouter(withAxios(connect(mapStateToProps,{userRegistration,userLogin,saveOrder})(BaseForm),axios))
