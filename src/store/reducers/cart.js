@@ -20,10 +20,10 @@ export default (state=initState,action) => {
             }
         }
         case (Actions.REMOVE_CART_ITEM): {
-            const myCart = state.find(item => item.user === 'mario');
-            const remainingCart = state.filter(item => item.user !== 'mario')
-            const updatedSandwichList = myCart.sandwichList.filter(sandwich => sandwich.id !== action.payload);
-            const sandwichPrice = myCart.sandwichList.find(sandwich => sandwich.id === action.payload).totalPrice;
+            const myCart = state.find(item => item.user === action.payload.user);
+            const remainingCart = state.filter(item => item.user !== action.payload.user)
+            const updatedSandwichList = myCart.sandwichList.filter(sandwich => sandwich.id !== action.payload.id);
+            const sandwichPrice = myCart.sandwichList.find(sandwich => sandwich.id === action.payload.id).totalPrice;
             let updatedPrice;
             // if (updatedSandwichList.length >= 0) {
                 updatedPrice = +(myCart.totalPrice - sandwichPrice).toFixed(2);

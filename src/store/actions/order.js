@@ -18,7 +18,7 @@ const saveOrder = (user,order) => {
     return async (dispatch) => {
         dispatch(setOrderLoading());
         try {
-            const response = await axios.post('/ordersssss',{user,order})
+            const response = await axios.post('/orders',{user,order})
             if (response) {
                 dispatch(setOrderStatus('succeed'))
             } else {

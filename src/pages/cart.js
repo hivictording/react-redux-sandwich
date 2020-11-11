@@ -54,6 +54,9 @@ class Cart extends Component {
                 cartTotalPrice = false;
             }
             myCart = myCart.sandwichList;
+            if (myCart.length < 1 ) {
+                myCart = null
+            }
         }
 
         let mySandwiches;
@@ -73,7 +76,7 @@ class Cart extends Component {
                                         })}
                                         
                                     </ul>
-                                    <button className={classes.iconWrapper} onClick={() => this.props.removeCartItem(sandwich.id)}>
+                                    <button className={classes.iconWrapper} onClick={() => this.props.removeCartItem(currentUser,sandwich.id)}>
                                         <FaTimes/>
                                     </button>
                                 </div>
