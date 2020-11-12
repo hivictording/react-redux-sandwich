@@ -9,6 +9,7 @@ import IngridentsDBReducer from './store/reducers/ingredientsDB'
 import CartReducer from './store/reducers/cart'
 import UserReducer from './store/reducers/user'
 import OrderReducer from './store/reducers/order'
+import OrdersReducer from './store/reducers/orders'
 
 import Layout from './pages/layout'
 import Builder from './pages/builder'
@@ -27,7 +28,8 @@ function App() {
     ingredientsDB: IngridentsDBReducer,
     cart: CartReducer,
     user: UserReducer,
-    saveOrder: OrderReducer
+    saveOrder: OrderReducer,
+    orders: OrdersReducer
   })
 
   const store = createStore(parentReducer,composeEnhancers(applyMiddleware(...middleware)));

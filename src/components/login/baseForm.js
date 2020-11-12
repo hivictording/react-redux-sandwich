@@ -7,7 +7,8 @@ import Button from '../../UI/Button'
 import Input from '../../UI/Input'
 import classes from './baseForm.module.css'
 import {userRegistration,userLogin} from '../../store/actions/user'
-import {saveOrder} from '../../store/actions/order'
+import {saveOrder,clearOrderStatus} from '../../store/actions/order'
+import {clearCart} from '../../store/actions/cart'
 import {checkValidation} from '../../utils/formUtils'
 import withAxios from '../../hoc/withAxios'
 import axios from '../../utils/axios/axiosLocal'
@@ -141,7 +142,7 @@ class BaseForm extends Component {
         this.formReset()
     }
 
-    submitHandler = (event) => {
+    submitHandler = async (event) => {
         event.preventDefault();
 
         if(this.checkForm()) {
@@ -170,7 +171,10 @@ class BaseForm extends Component {
 
                 const order = {shipInfo,sandwiches}
 
-                this.props.saveOrder(user, order)
+                const response = await this.props.saveOrder(user, order);
+                if (response === 'succeed') {
+                    this.props.clearCart();
+                }
                 
             } else {
                 return;
@@ -180,9 +184,10 @@ class BaseForm extends Component {
     }
 
     componentDidMount() {
-        console.log(this.fieldRefs)
+        if (this.fieldRefs.length >= 1) {
+            this.fieldRefs[0].focus();
+        }
         
-        this.fieldRefs[0].focus();
     }
 
     render() {
@@ -200,7 +205,8 @@ class BaseForm extends Component {
                 return <Spinner/>
             } else {
                 if (this.props.orderStatus.status === 'succeed') {
-                    return <Redirect to="/"/>
+                    this.props.clearOrderStatus();
+                    return <Redirect to="/orders"/>
                 }
             }
             
@@ -245,4 +251,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default withRouter(withAxios(connect(mapStateToProps,{userRegistration,userLogin,saveOrder})(BaseForm),axios))
+export default withRouter(withAxios(connect(mapStateToProps,{userRegistration,userLogin,saveOrder,clearOrderStatus,clearCart})(BaseForm),axios))

@@ -108,9 +108,306 @@
       "email": "ruhuizhu@outlook.com",
       "password": "password",
       "id": "f605849c-96dc-4f28-9089-9b39ef65e2d3"
+    },
+    {
+      "username": "himary",
+      "email": "mary@test.com",
+      "password": "password",
+      "id": "9d66fd6d-64ac-4656-8b78-c4d795c935b3"
     }
   ],
   "orders": [
-    
+    {
+      "id": "6ff4b639-c393-4961-b52b-2d622e7f0ac8",
+      "user": "hivictor",
+      "order": {
+        "shipInfo": {
+          "address": "12 Luzon Avenue, Ontario, Canada",
+          "deliveryMethod": "regular",
+          "deliveryTime": [
+            "morning"
+          ],
+          "deliveryDay": [
+            "Monday"
+          ],
+          "deliveryLocation": [
+            "house"
+          ]
+        },
+        "sandwiches": [
+          {
+            "totalPrice": 14,
+            "sandwichList": [
+              {
+                "id": "a5fb504a-c1d6-4847-a0db-529af42a845c",
+                "sandwich": [
+                  {
+                    "name": "fish",
+                    "count": 1,
+                    "unitPrice": 12.99,
+                    "totalPrice": 12.99
+                  }
+                ],
+                "totalPrice": 14
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "e6fcb53e-6e81-4176-8a30-0f5929df6e37",
+      "user": "hivictor",
+      "order": {
+        "shipInfo": {
+          "address": "12 Luzon Avenue, Ontario, Canada",
+          "deliveryMethod": "regular",
+          "deliveryTime": [
+            "morning"
+          ],
+          "deliveryDay": [
+            "Wednesday"
+          ],
+          "deliveryLocation": [
+            "house"
+          ]
+        },
+        "sandwiches": [
+          {
+            "totalPrice": 14.39,
+            "sandwichList": [
+              {
+                "id": "eb88b151-85df-4ae2-a7b4-d0a6bd91f217",
+                "sandwich": [
+                  {
+                    "name": "pork",
+                    "count": 1,
+                    "unitPrice": 9.99,
+                    "totalPrice": 9.99
+                  },
+                  {
+                    "name": "mushroom",
+                    "count": 1,
+                    "unitPrice": 3.39,
+                    "totalPrice": 3.39
+                  }
+                ],
+                "totalPrice": 14.39
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "31faa0db-2e4c-42b1-9c7d-fd8c0a1e7f38",
+      "user": "hivictor",
+      "order": {
+        "shipInfo": {
+          "address": "5651 ogilvie street,halifax",
+          "deliveryMethod": "express",
+          "deliveryTime": [
+            "afternoon"
+          ],
+          "deliveryDay": [
+            "Tuesday",
+            "Thursday"
+          ],
+          "deliveryLocation": [
+            "neighbour"
+          ]
+        },
+        "sandwiches": [
+          {
+            "totalPrice": 15.78,
+            "sandwichList": [
+              {
+                "id": "24dd00fc-37ae-4925-89f5-8b7399fb3af1",
+                "sandwich": [
+                  {
+                    "name": "pork",
+                    "count": 1,
+                    "unitPrice": 9.99,
+                    "totalPrice": 9.99
+                  },
+                  {
+                    "name": "cabbage",
+                    "count": 2,
+                    "unitPrice": 2.39,
+                    "totalPrice": 4.78
+                  }
+                ],
+                "totalPrice": 15.78
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "551b9a47-c99b-488e-9259-248f5c6f548e",
+      "user": "hivictor",
+      "order": {
+        "shipInfo": {
+          "address": "dsgdsgfd",
+          "deliveryMethod": "cheapest",
+          "deliveryTime": [
+            "afternoon",
+            "evening"
+          ],
+          "deliveryDay": [
+            "Wednesday",
+            "Thursday"
+          ],
+          "deliveryLocation": [
+            "street"
+          ]
+        },
+        "sandwiches": [
+          {
+            "totalPrice": 15.69,
+            "sandwichList": [
+              {
+                "id": "f906f25c-c4a9-4be8-81b6-35c752f07a14",
+                "sandwich": [
+                  {
+                    "name": "fish",
+                    "count": 1,
+                    "unitPrice": 12.99,
+                    "totalPrice": 12.99
+                  },
+                  {
+                    "name": "lettuce",
+                    "count": 1,
+                    "unitPrice": 1.69,
+                    "totalPrice": 1.69
+                  }
+                ],
+                "totalPrice": 15.69
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fa088efe-43d2-4844-911a-5ea01e337f40",
+      "user": "himary",
+      "order": {
+        "shipInfo": {
+          "address": "markham",
+          "deliveryMethod": "express",
+          "deliveryTime": [
+            "afternoon",
+            "morning",
+            "evening"
+          ],
+          "deliveryDay": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "deliveryLocation": [
+            "house"
+          ]
+        },
+        "sandwiches": [
+          {
+            "totalPrice": 28.57,
+            "sandwichList": [
+              {
+                "id": "ef3f36b4-0705-43f3-9f5f-7a95a13800ad",
+                "sandwich": [
+                  {
+                    "name": "fish",
+                    "count": 1,
+                    "unitPrice": 12.99,
+                    "totalPrice": 12.99
+                  },
+                  {
+                    "name": "cucumber",
+                    "count": 1,
+                    "unitPrice": 0.99,
+                    "totalPrice": 0.99
+                  },
+                  {
+                    "name": "green pepper",
+                    "count": 1,
+                    "unitPrice": 2.89,
+                    "totalPrice": 2.89
+                  }
+                ],
+                "totalPrice": 17.88
+              },
+              {
+                "id": "439fb3d8-afbc-47ff-9394-3da90a3aa102",
+                "sandwich": [
+                  {
+                    "name": "chicken",
+                    "count": 1,
+                    "unitPrice": 7.99,
+                    "totalPrice": 7.99
+                  },
+                  {
+                    "name": "lettuce",
+                    "count": 1,
+                    "unitPrice": 1.69,
+                    "totalPrice": 1.69
+                  }
+                ],
+                "totalPrice": 10.69
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "a1f6e545-23d1-4a9c-b60d-900dd59c6679",
+      "user": "himary",
+      "order": {
+        "shipInfo": {
+          "address": "5651 ogilvie street,halifax",
+          "deliveryMethod": "express",
+          "deliveryTime": [
+            "afternoon"
+          ],
+          "deliveryDay": [
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "deliveryLocation": [
+            "house"
+          ]
+        },
+        "sandwiches": [
+          {
+            "totalPrice": 4.69,
+            "sandwichList": [
+              {
+                "id": "1d7ba66a-a417-40af-974a-646a5ef6ee7f",
+                "sandwich": [
+                  {
+                    "name": "tomato",
+                    "count": 1,
+                    "unitPrice": 2.69,
+                    "totalPrice": 2.69
+                  },
+                  {
+                    "name": "cheese",
+                    "count": 1,
+                    "unitPrice": 0.99,
+                    "totalPrice": 0.99
+                  }
+                ],
+                "totalPrice": 4.69
+              }
+            ]
+          }
+        ]
+      }
+    }
   ]
 }

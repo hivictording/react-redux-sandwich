@@ -16,6 +16,9 @@ export default (state=initState,action) => {
         case (Actions.SET_ORDER_STATUS): {
             return {...state, status: action.payload}
         }
+        case (Actions.CLEAR_ORDER_STATUS): {
+            return {...state, status: ''}
+        }
         default:
             return state;
     }
