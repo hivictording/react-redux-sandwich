@@ -10,6 +10,10 @@ const clearCart = () => {
     return {type: Actions.CLEAR_CART}
 }
 
+const setCartOwner = (username) => {
+    return {type: Actions.SET_CART_OWNER, payload: username}
+}
+
 export {
-    addCartItem,removeCartItem,clearCart
+    addCartItem,removeCartItem,clearCart,setCartOwner
 }

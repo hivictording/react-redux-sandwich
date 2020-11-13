@@ -28,7 +28,7 @@ const userRegistration = (user) => {
         try {
             const updatedUser = {...user,id:uuid()};
             const response = await axios.post('/users',updatedUser);
-            dispatch(setCurrentUser(response.data));
+            await dispatch(setCurrentUser(response.data));
         } catch (error) {
             console.log('Register user failed');
         }
@@ -39,13 +39,13 @@ const userRegistration = (user) => {
 const userLogin = (username,password) => {
     
     return async (dispatch) => {
-        dispatch(setUserLoading())
+        await dispatch(setUserLoading())
         try {
             const response = await axios.get(`/users?username=${username}&password=${password}`)
             if (response.data.length >= 1) {
-                dispatch(setCurrentUser(response.data[0]));
+                await dispatch(setCurrentUser(response.data[0]));
             } else {
-                dispatch(setCurrentUserError())
+                await dispatch(setCurrentUserError())
             }
             
         } catch (error) {

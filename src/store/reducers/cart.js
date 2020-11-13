@@ -38,6 +38,16 @@ export default (state=initState,action) => {
         case (Actions.CLEAR_CART): {
             return []
         }
+        case (Actions.SET_CART_OWNER): {
+            console.log(action.payload);
+            return state.map(cart => {
+                if (cart.user === 'guest') {
+                    return {...cart,user: action.payload}
+                }
+
+                return cart;
+            })
+        }
         default:
             return state;
     }
