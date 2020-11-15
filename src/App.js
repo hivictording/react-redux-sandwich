@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Suspense} from 'react';
 import {createStore,combineReducers,compose,applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
@@ -14,9 +14,10 @@ import OrdersReducer from './store/reducers/orders'
 import Layout from './pages/layout'
 import Builder from './pages/builder'
 import Cart from './pages/cart'
-import Orders from './pages/orders'
+// import Orders from './pages/orders'
 import Login from './pages/login'
 import Default from './pages/default'
+import Spinner from './UI/Spinner/spinner';
 
 function App() {
 
@@ -34,6 +35,8 @@ function App() {
 
   const store = createStore(parentReducer,composeEnhancers(applyMiddleware(...middleware)));
 
+  const Orders = React.lazy(() => import('./pages/orders'));
+
   return (
     <Provider store={store}>
       <Router>
@@ -49,7 +52,9 @@ function App() {
                 {/* <Login/> */}
               </Route>
               <Route exact path="/orders">
-                <Orders/>
+                <Suspense fallback={<Spinner/>}>
+                  <Orders/>
+                </Suspense> 
               </Route>
               <Route>
                 <Default/>
