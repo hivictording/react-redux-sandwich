@@ -20,6 +20,7 @@ import Default from './pages/default'
 import Spinner from './UI/Spinner/spinner';
 
 // testing git
+//testing git 2
 
 function App() {
 

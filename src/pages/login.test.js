@@ -17,12 +17,12 @@ describe('login test suite',() => {
         component = setUp()
     })
 
-    it('should render login form by default',() => {
+    it('should render login form by default', () => {
         const wrapper = component.find(LoginForm);
         expect(wrapper.length).toBe(1)
     })
 
-    it('should render only one form',() => {
+    it('should render only one form', () => {
         const wrapper = component.children();
         expect(wrapper.length).toBe(1)
     })
@@ -32,6 +32,7 @@ describe('login test suite',() => {
         let wrapper = component.find(RegisterForm)
         expect(wrapper.length).toBe(1)
         wrapper = component.find(LoginForm)
-        expect(wrapper.length).toBe(0)
+        // expect(wrapper.length).toBe(0)
+        expect(wrapper).toHaveLength(0)
     })
 })

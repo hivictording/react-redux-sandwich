@@ -9,6 +9,7 @@
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
     "lodash": "^4.17.20",
+    "prop-types": "^15.7.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-icons": "^3.11.0",
