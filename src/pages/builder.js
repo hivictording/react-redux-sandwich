@@ -45,18 +45,28 @@ class Builder extends Component {
         // ingredient List
         const ingredientArray = this.props.ingredients.ingredients;
         if (ingredientArray.length < 1) {
-            ingredientList = (<h6>Empty</h6>)
+            // ingredientList = (<h6>Empty</h6>)
+            ingredientList = () => (<h6>Empty</h6>)
         } else {
+            ingredientList = () => {
+                return <div className={classes.ingredientList}>
+                     {ingredientArray.map((ingredient) => {
+                         return <div key={ingredient.name}>
+                                     {ingredient.name} {ingredient.count}: ${ingredient.totalPrice}
+                                 </div>
+                     })}
+             </div>
+            }
 
-            ingredientList = (
-            <div className={classes.ingredientList}>
-                    {ingredientArray.map((ingredient) => {
-                        return <div key={ingredient.name}>
-                                    {ingredient.name} {ingredient.count}: ${ingredient.totalPrice}
-                                </div>
-                    })}
-            </div>
-            )
+            // ingredientList = (
+            // <div className={classes.ingredientList}>
+            //         {ingredientArray.map((ingredient) => {
+            //             return <div key={ingredient.name}>
+            //                         {ingredient.name} {ingredient.count}: ${ingredient.totalPrice}
+            //                     </div>
+            //         })}
+            // </div>
+            // )
         }
 
         // buildControls
@@ -94,7 +104,8 @@ class Builder extends Component {
                         Base Price: ${this.props.ingredientsDB.basePrice}
                     </div>)}
                     <div className={classes.cardCenter}>
-                        {ingredientList}
+                        {/* {ingredientList} */}
+                        <ingredientList/>
                     </div>
                     
                     {(ingredientArray.length >= 1) && (<div className={classes.totalPrice}>
