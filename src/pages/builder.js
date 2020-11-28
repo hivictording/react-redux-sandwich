@@ -113,7 +113,8 @@ class Builder extends Component {
                     </div>)}
                 </Card>
 
-                <Card size="large">
+                <Card size="large"
+                >
                     <div className={classes.cardTitle}>Select Ingredients</div>
                     <div className={classes.builderControls}>
                         {builderControls}

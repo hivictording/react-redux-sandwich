@@ -5,7 +5,7 @@ import classes from './toggleMenu.module.css';
 
 const ToggleMenu = ({clicked}) => {
     return (
-        <button className={classes.toggleMenu} onClick={clicked}>
+        <button className={classes.toggleMenu} onClick={clicked} >
             <FaBars/>
         </button>
     )

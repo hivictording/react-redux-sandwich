@@ -45,7 +45,13 @@ class NavBar extends Component {
     
     render() {
         return (
-            <div className={classes.navbar}>
+            <div className={classes.navbar}
+            ref={element => {
+                    if (element) {
+                        console.log(element);
+                        console.log(element.getBoundingClientRect())
+                    }
+                }}>
                 <Logo size="small"/>
                 <NavLinks/>
                 <NavRight isAuthenticated={this.props.isAuthenticated} currentUser={this.props.currentUser}logout={this.props.userLogout}/>
