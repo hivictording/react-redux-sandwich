@@ -18,6 +18,7 @@ import Cart from './pages/cart'
 import Login from './pages/login'
 import Default from './pages/default'
 import Spinner from './UI/Spinner/spinner';
+import FormikForm from './components/formik/form'
 
 // testing git
 //testing git 2
@@ -50,6 +51,9 @@ function App() {
               </Route>
               <Route exact path="/cart">
                 <Cart/>
+              </Route>
+              <Route exact path="/formik">
+                <FormikForm/>
               </Route>
               <Route exact path="/login" render={(routeProps) => <Login {...routeProps}/>}>
                 {/* <Login/> */}
