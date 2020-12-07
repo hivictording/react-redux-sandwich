@@ -18,7 +18,7 @@ import Cart from './pages/cart'
 import Login from './pages/login'
 import Default from './pages/default'
 import Spinner from './UI/Spinner/spinner';
-import FormikForm from './components/formik/form2'
+import FormikForm from './components/formik/form3'
 
 // testing git
 //testing git 2
