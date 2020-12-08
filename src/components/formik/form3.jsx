@@ -28,7 +28,7 @@ function form3() {
                         (props) => {
                             const {form:{values:{tickets}},push,remove} = props
 
-                            return tickets.map((ticket,index) => {
+                            return tickets.map(index => {
                                 return <div className="row align-items-center justify-content-around" key={index}>
                                             <div className="form-group col-4">
                                                 <label htmlFor={`name${index}`}>Enter Name</label>
