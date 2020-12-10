@@ -1,8 +1,8 @@
 import React from 'react'
-import {ErrorMessage, Field} from 'formik'
+import {Field,ErrorMessage} from 'formik'
 import Error from '../error'
 
-function Checkbox({name,label,options}) {
+function Radiobutton({name,label,options}) {
     return (
         <div className="form-group">
             <label >{label}</label>
@@ -10,7 +10,7 @@ function Checkbox({name,label,options}) {
                     options.map(option => {
                         return (
                             <div className="form-check" key={option.value}>
-                                <Field className="form-check-input" type='checkbox' name={name} id={option.value} value={option.value}/>
+                                <Field className="form-check-input" type='radio' name={name} id={option.value} value={option.value}/>
                                 <label className="form-check-label" htmlFor={option.value}>
                                     {option.key}
                                 </label>
@@ -18,9 +18,9 @@ function Checkbox({name,label,options}) {
                         )
                     })
                 }
-            <ErrorMessage name={name} component={Error}/>   
+            <ErrorMessage name={name} component={Error}/>
         </div>
     )
 }
 
-export default Checkbox
+export default Radiobutton

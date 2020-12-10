@@ -7,13 +7,16 @@ import FormikElement from './Elements/FormikElement'
 const initValues = {
     name: '',
     hobbies: [],
-    comments: ''
+    comments: '',
+    deliveryDay: '',
 }
 const handleSubmit = values => console.log("values",values)
 const validationSchema = Yup.object({
     name: Yup.string().required('required'),
     hobbies: Yup.array().of(Yup.string()).min(1,'required'),
-    comments: Yup.string().required('required')
+    comments: Yup.string(),
+    deliveryDay: Yup.string().required('required'),
+    
 })
 
 const hobbies = [
@@ -24,6 +27,14 @@ const hobbies = [
     {key:"go shopping",value:"shopping"},
 ]
 
+const deliveryDays = [
+    {key:"Monday",value:"monday"},
+    {key:"Tuesday",value:"tuesday"},
+    {key:"Wednesday",value:"wednesday"},
+    {key:"Thursday",value:"thursday"},
+    {key:"Friday",value:"friday"},
+]
+
 function form() {
     return (
         <Formik initialValues={initValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
@@ -32,6 +43,7 @@ function form() {
                     return (
                         <Form className="w-75 mx-auto my-3">
                             <FormikElement type="input" name="name" label="Enter Name"/>
+                            <FormikElement type="radio" name="deliveryDay" label="Select Your Delivery Day" options={deliveryDays}/>
                             <FormikElement type="checkbox" name="hobbies" label="Your Hobbies" options={hobbies}/>
                             <FormikElement type="textarea" name="comments" label="Comments"/>
                             <button type="submit" className="btn btn-info">Submit</button>
