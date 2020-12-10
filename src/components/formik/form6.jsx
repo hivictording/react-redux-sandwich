@@ -6,12 +6,14 @@ import FormikElement from './Elements/FormikElement'
 
 const initValues = {
     name: '',
-    hobbies: []
+    hobbies: [],
+    comments: ''
 }
 const handleSubmit = values => console.log("values",values)
 const validationSchema = Yup.object({
     name: Yup.string().required('required'),
-    hobbies: Yup.array().of(Yup.string()).min(1,'required')
+    hobbies: Yup.array().of(Yup.string()).min(1,'required'),
+    comments: Yup.string().required('required')
 })
 
 const hobbies = [
@@ -29,8 +31,9 @@ function form() {
                 formik => {
                     return (
                         <Form className="w-75 mx-auto my-3">
-                            <FormikElement control="input" name="name" label="Enter Name"/>
-                            <FormikElement control="checkbox" name="hobbies" label="Your Hobbies" options={hobbies}/>
+                            <FormikElement type="input" name="name" label="Enter Name"/>
+                            <FormikElement type="checkbox" name="hobbies" label="Your Hobbies" options={hobbies}/>
+                            <FormikElement type="textarea" name="comments" label="Comments"/>
                             <button type="submit" className="btn btn-info">Submit</button>
                         </Form>
                     )
