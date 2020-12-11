@@ -9,6 +9,7 @@ const initValues = {
     hobbies: [],
     comments: '',
     deliveryDay: '',
+    country: ''
 }
 const handleSubmit = values => console.log("values",values)
 const validationSchema = Yup.object({
@@ -16,6 +17,7 @@ const validationSchema = Yup.object({
     hobbies: Yup.array().of(Yup.string()).min(1,'required'),
     comments: Yup.string(),
     deliveryDay: Yup.string().required('required'),
+    country: Yup.string().required('required')
     
 })
 
@@ -35,6 +37,13 @@ const deliveryDays = [
     {key:"Friday",value:"friday"},
 ]
 
+const countries = [
+    {key:"Canada",value:'ca'},
+    {key:"China",value:'cn'},
+    {key:"USA",value:'us'},
+    {key:"United Kingdom",value:'uk'},
+]
+
 function form() {
     return (
         <Formik initialValues={initValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
@@ -43,6 +52,7 @@ function form() {
                     return (
                         <Form className="w-75 mx-auto my-3">
                             <FormikElement type="input" name="name" label="Enter Name"/>
+                            <FormikElement type="select" name="country" label="Where do you live?" options={countries} />
                             <FormikElement type="radio" name="deliveryDay" label="Select Your Delivery Day" options={deliveryDays}/>
                             <FormikElement type="checkbox" name="hobbies" label="Your Hobbies" options={hobbies}/>
                             <FormikElement type="textarea" name="comments" label="Comments"/>

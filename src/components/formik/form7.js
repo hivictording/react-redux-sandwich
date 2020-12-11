@@ -1,6 +1,7 @@
 import React from 'react'
-import {Formik,Form,useField} from 'formik'
+import {Formik,Form,useField, Field, ErrorMessage} from 'formik'
 import * as Yup from 'yup'
+import Error from './error'
 
 const initValues = {
     firstName: '',
@@ -15,8 +16,6 @@ const validationSchema = Yup.object({
     age: Yup.number().required('required').integer('must be an integer').positive('must greater than 0'),
     adult: Yup.boolean().required('required')
 })
-
-
 
 const TextField = ({label,...props}) => {
     // this will return field props for that field
@@ -40,16 +39,20 @@ const TextField = ({label,...props}) => {
         </div>
     )
 }
-// const TextField = ({name,label,...props}) => {
-//     const [field] = useField(name);
 
-//     return (
-//         <div className="form-group">
-//             <label htmlFor={name}>{label}</label>
-//             <input id={name} {...field} {...props} />
-//         </div>
-//     )
-// }
+const TextInput = ({label,errorcomp,...props}) => {
+    const [field] = useField(props);
+
+    return (
+        <div className="form-group">
+            <label htmlFor={field.name}>{label}</label>
+            <Field id={field.name} {...field} {...props} />
+            {/* <Field id={field.name} name={field.name} {...props} /> */}
+            <ErrorMessage name={field.name} component={errorcomp}/>
+        </div>
+    )
+}
+
 
 function form7() {
     return (
@@ -59,7 +62,8 @@ function form7() {
                     return (
                         <Form className="w-50 mx-auto my-3">
                             <TextField type="text" name="firstName" label="First Name" age={30} gender="male" className="form-control"/>
-                            <TextField type="text" name="age" label="Your Age" className="form-control"/>
+                            {/* <TextField type="text" name="age" label="Your Age" className="form-control"/> */}
+                            <TextInput name="age" label="How old are you?" className="form-control" errorcomp={Error}/>
                             <TextField type="checkbox" name="adult" label="Adult" className="form-control"/>
                             <button className="btn btn-info">Submit</button>
                         </Form>
