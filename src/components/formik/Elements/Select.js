@@ -1,5 +1,6 @@
 import React from 'react'
 import {Field,ErrorMessage} from 'formik'
+import Error from '../error'
 
 function Select({name,label,options,...rest}) {
     const updatedOptions = [{key:label,value:''},...options]
@@ -16,7 +17,7 @@ function Select({name,label,options,...rest}) {
                                     }
             </Field>
             
-            <ErrorMessage name={name}/>
+            <ErrorMessage name={name} component={Error}/>
         </div>
         ) 
     } else {
