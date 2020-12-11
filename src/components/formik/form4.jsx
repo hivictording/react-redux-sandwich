@@ -1,5 +1,5 @@
 import React from 'react'
-import {Formik,Form,Field,ErrorMessage,FieldArray} from 'formik'
+import {Formik,Form,Field,ErrorMessage,FieldArray, useField} from 'formik'
 import * as Yup from 'yup'
 import './form4.css'
 import Error from './error'
@@ -86,6 +86,7 @@ export default () => {
                             <label htmlFor="numberOfTickets">How many tickets do you want to buy?</label>
                             <Field name="numberOfTickets">
                                 {(props) => {
+                                    console.log(props)
                                     const {form,field} = props;
                                     const {values,setValues} = form;
                                     
