@@ -1,6 +1,8 @@
 import React from 'react'
 import {Formik,Form} from 'formik'
 import * as Yup from 'yup'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
 import FormikElement from './Elements/FormikElement'
 
@@ -10,7 +12,7 @@ const initValues = {
     comments: '',
     deliveryDay: '',
     country: [],
-    birthday: ''
+    startDate: '',
 }
 const handleSubmit = values => console.log("values",values)
 const validationSchema = Yup.object({
@@ -19,7 +21,7 @@ const validationSchema = Yup.object({
     comments: Yup.string(),
     deliveryDay: Yup.string().required('required'),
     country: Yup.array().of(Yup.string()).min(1,'required'),
-    birthday: Yup.date().required('required')
+    startDate: Yup.date().required('required'),
 })
 
 const hobbies = [
@@ -45,7 +47,11 @@ const countries = [
     {key:"United Kingdom",value:'uk'},
 ]
 
-function form() {
+function Form6() {
+    
+
+    // console.log('start date:',startDate)
+    // console.log('end date:',endDate)
     return (
         <Formik initialValues={initValues} onSubmit={handleSubmit} validationSchema={validationSchema}>
             {
@@ -53,7 +59,8 @@ function form() {
                     return (
                         <Form className="w-75 mx-auto my-3">
                             <FormikElement type="input" name="name" label="Enter Name"/>
-                            <FormikElement type="date" name="birthday" label="Your Birthday" isClearable maxDate={new Date()}/>
+                            <FormikElement type="date" name="startDate" label="Start Date" />
+                            
                             <FormikElement type="select" name="country" label="Where do you live?" options={countries} multiple={true}/>
                             <FormikElement type="radio" name="deliveryDay" label="Select Your Delivery Day" options={deliveryDays}/>
                             <FormikElement type="checkbox" name="hobbies" label="Your Hobbies" options={hobbies}/>
@@ -67,6 +74,6 @@ function form() {
     )
 }
 
-export default form
+export default Form6
 
 
